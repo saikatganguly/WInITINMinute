@@ -1,0 +1,40 @@
+{
+  "ProjectName": "winIt",
+  "ProjectGuid": "032b4d1b-787c-4bc3-9d79-21df5bbad794",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.winIt",
+  "DisplayName": "winIt",
+  "Author": "",
+  "Description": "",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.5.0",
+  "AndroidPermissions": [],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{fce483d3-8741-493e-b302-c9c6a6841315}",
+  "WP8ProductID": "{feed6e5d-5f4d-4086-9988-a0ffe60544dd}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.winIt",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
