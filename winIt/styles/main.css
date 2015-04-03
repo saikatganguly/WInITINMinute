@@ -1,1 +1,2 @@
 .km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
+#defaultCountdown {width: 100px; height: 50px;}

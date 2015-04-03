@@ -1,10 +1,10 @@
-
+ var app;
 (function () {
 
     // store a reference to the application object that will be created
     // later on so that we can use it if need be
-    var app;
-
+   
+    
     // create an object to store the models for each view
     window.APP = {
       models: {
@@ -34,7 +34,7 @@
       navigator.splashscreen.hide();
 
       app = new kendo.mobile.Application(document.body, {
-        
+      
         // comment out the following line to get a UI which matches the look
         // and feel of the operating system
         skin: 'flat',
@@ -46,4 +46,6 @@
     }, false);
 
 
+
+   
 }());
