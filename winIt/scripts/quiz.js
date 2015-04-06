@@ -1,4 +1,4 @@
- var correct = 0;
+var correct = 0;
 (function () {
 window.APP = {
      models: {

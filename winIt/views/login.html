@@ -1,18 +1,18 @@
-<div data-role="view" id="login" data-title="Login" data-layout="main" >
-    
+<div data-role="view" id="login" data-title="Login" data-layout="main"> 
     <form action="#">
-       
-          
-                <label>Type text  </label>
-                    <input type="text" value="Text" id="userName"/>
-              
-         
-           
-                <label>
-                Type password </label>
-                <input type="password" value="password" id="password"/>
-               
-                <button id="acceptButton" type="submit" onClick="login()">Login</button>
+       <table style="border: 0">
+            <tr>
+                <th><label>Username  </label></th>
+                <td><input type="text" value="" id="userName" placeholder="Enter Username"/></td>
+            </tr>
+            <tr>
+                 <th><label>Password </label></th>
+                <td><input type="password" value="" id="password" placeholder="Enter Password"/></td>
+            </tr> 
+            <tr>
+                <td><button id="acceptButton" type="submit" onClick="login()">Login</button></td>
+            </tr>   
                 
-               </form>
+        </table>
+    </form>
 </div>

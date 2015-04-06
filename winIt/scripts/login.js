@@ -3,7 +3,25 @@ var everlive = new Everlive({
     scheme: "https",
     token: localStorage.getItem('access-token')
 });
-
+function beforeShow(beforeShowEvt) {
+    // alert(app.view().id);
+    if(app.view().id == "views/login.html") {
+         $("#header").hide("fast");
+         beforeShowEvt.preventDefault();
+         $("#drawerBtn").hide("fast");
+         $("#appDrawer").hide("fast");
+    }
+}
+function hideDrawer(){
+       alert(app.view().id);
+    //  $("#drawerBtn").hide("fast");
+  //   $("#appDrawer").data("kendoMobileDrawer").hide();
+ //   $("#header").hide("fast");
+   //  $("#my-drawer").data("kendoMobileDrawer").hide();
+     if(app.view().id == "views/login.html") {
+      $("#drawerBtn").hide("fast");
+     }
+}
 function login(){
                 alert("Checking alert in login");
                 var username = $("#userName").val();
@@ -24,6 +42,7 @@ function logout(){
             everlive.Users.logout(function() {
             alert("Logout successful!");
             localStorage.getItem('access-token');
+                app.navigate("views/login.html","slide");
         }, function(err) {
             alert("Failed to logout: " + err.message);
         });

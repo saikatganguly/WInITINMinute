@@ -1,134 +1,29 @@
-
-<div data-role="view" id="page1" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="page1" data-title="quiz"  data-model="APP.models.quiz">
-     <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-          <span data-role="view-title"  data-align="left"></span>
-          
-         </div>
-    </div>-->
-   
-    <form>
-    <h2>
-        What is C++
-    </h2>
-    <ul data-role="listview" data-style="inset" data-template="quizTemplate" data-bind="source: first"></ul>
-        <!--<ul data-role="listview" data-style="inset" data-template="ansTemplate" data-bind="source: first"></ul>-->
-       <a class="button" data-role="button" data-bind="click: page2">Next</a>
-    </form>    
-</div>
-<div data-role="view"  id="page2" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="page2" data-title="quiz"  data-model="APP.models.quiz">
- <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-           <span data-role="view-title"  data-align="left"></span>
-            <span data-align="right">timer</span>
-         </div>
-    </div>-->
-    <form>
-    <h2>
-       What is Java
-    </h2>
-    <ul data-role="listview" data-style="inset" data-template="quizTemplate" data-bind="source: second"></ul>
-    <a data-role="button" data-bind="click: page3">Next</a>
-    </form>    
-</div>
-<div data-role="view"  id="page3" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="page3" data-title="quiz"  data-model="APP.models.quiz">
- <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-          <span data-role="view-title"  data-align="left"></span>
-            <span data-align="right">timer</span>
-         </div>
-    </div>-->
-    <form>
-    <h2>
-       What is india
-    </h2>
-    <ul data-role="listview" data-style="inset" data-template="quizTemplate" data-bind="source: third"></ul>
-    <a data-role="button" data-bind="click: page4">Next</a>
-    </form>
-</div>
-<div data-role="view"  id="page4" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="page4" data-title="quiz"  data-model="APP.models.quiz">
- <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-           <span data-role="view-title"  data-align="left"></span>
-            <span data-align="right">timer</span>
-         </div>
-    </div>-->
-    <form>
-    <h2>
-      What is Cricket
-    </h2>
-    <ul data-role="listview" data-style="inset" data-template="quizTemplate" data-bind="source: fourth"></ul>
-    <a data-role="button" data-bind="click: page5">Next</a>
-    </form>
-</div>
-<div data-role="view"  id="page5" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="page5" data-title="quiz"  data-model="APP.models.quiz">
-     <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-          <span data-role="view-title"  data-align="left"></span>
-            <span data-align="right">timer</span>
-         </div>
-    </div>-->
-    <form>
-    <h2>
-       What is cow
-    </h2>
-    <ul data-role="listview" data-style="inset" data-template="quizTemplate" data-bind="source: fifth"></ul>
-    <a data-role="button" data-bind="click: result">Next</a>
-    </form>
-</div>
-<div data-role="view"  id="result" data-title="Quiz" data-layout="main" data-model="APP.models.quiz">
-<!--<div data-role="view" id="result" data-title="quiz"  data-model="APP.models.quiz">
- <div data-role="header">
-      <div data-role="navbar">
-           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-            <span data-role="view-title"  data-align="left"></span>
-            <span data-align="right">timer</span>
-         </div>
-    </div>-->
-    <div class="padding">
-        <h3 class="">Total Questions:5</h3>
-        <h4 class="title"> Score:</h4>
-           <a data-role="button" data-bind="click: page1">Restart</a>
+<div data-role="view" id="showquizpage" data-title="Quiz" data-layout="main">
+   <span id="ms_timer1" data-align="right"></span>
+    <div id="results"></div>
+    <a data-role="button" onclick="next()" >Next</a>
+<script type="text/x-kendo-template" id="temp">
+    <div>
+        <h3>#= question #</h3>
+        <ul data-role="listview"  class="km-widget km-listview km-list">
+            # for(var i = 0, l = options.length; i < l; i++){#
+            <li class="">
+                <label class="km-listview-label">
+                    <input class="option km-widget km-icon km-check" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#">
+                    #= options[i] #
+                </label>
+            </li>
+           #}#
+        </ul>
     </div>
+</script>
+<script type="text/javascript"  src="scripts/shoquiz.js"></script>
+   
 </div>
 
-
-<!-- this is the template used by the listview. template items are automatically
-     wrapped in an <li> by Kendo UI Mobile -->
-<script type="text/x-kendo-template" id="quizTemplate">
-    <label>
-      <span data-command-name="left (red)" >  #: data.id # </span>
-        <input class="option" id="#: data.id #" name="action" type="radio" data-bind="click: activitiesChanged" value=" #: data.value #"/>
-        #: data.question #
-    </label>
-   
-</script>
 
 
 
  
-<script>
-    $(function(){
-    $('#ms_timer').countdowntimer({
-    minutes :1,
-    seconds :0,
-    size : "lg",
-    timeUp : timeisUp
-    });             
-    });
-    
-    function timeisUp() {
-    $(".title").text("Score:"+correct);
-    app.navigate("#result","slide");
-    }
-</script>
+
+

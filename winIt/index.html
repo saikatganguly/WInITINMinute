@@ -12,9 +12,9 @@
         <script src="kendo/js/kendo.mobile.min.js"></script>
         <!--<script type="text/javascript" src="jquery.plugin.js"></script> -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/jquery.countdownTimer.js"></script>
-        <script src="scripts/quiz.js"></script>
-      <script src="scripts/shoquiz.js"></script>
+       <script src="scripts/jquery.countdownTimer.js"></script> 
+        <!--<script src="scripts/quiz.js"></script>--> 
+        <script src="scripts/shoquiz.js"></script>
         <script src="scripts/everlive.all.js"></script>
         <script src="scripts/login.js"></script>
   
@@ -22,18 +22,12 @@
    
 <body>
  
-     <div data-role="layout" data-id="main">
-    <div data-role="header">
+     <div data-role="layout" data-id="main"  data-init="hideDrawer" >
+    <div data-role="header" id="header">
       <div data-role="navbar">
           <span data-role="view-title"></span>
-          <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
-          <span id="main" data-align="right">
-              <table style="border:0px;">
-                   <tr>
-                       <td colspan="4"><span id="ms_timer"></span></td>
-                    </tr>
-      </table>
- </span>
+       <!--   <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button" id="drawerBtn"></a>-->
+          
       </div>
     </div>
          
@@ -42,7 +36,7 @@
   </div>
 
   <!-- application drawer and contents -->
-  <div data-role="drawer" id="appDrawer" style="width: 270px" data-title="Navigation">
+  <div data-role="drawer" id="appDrawer" style="width: 270px" data-title="Navigation" data-before-show="beforeShow" >
     <div data-role="header">
       <div data-role="navbar">
         <!--<span data-role="view-title"></span>-->
@@ -53,7 +47,7 @@
         <a href="views/home.html">Home</a>
       </li>
       <li>
-        <a href="views/quiz.html">Quiz</a>
+        <a href="views/quiz.html" onclick="startTimer()">Quiz</a>
       </li> 
       <li>
         <a href="views/settings.html">Settings</a>
@@ -62,14 +56,28 @@
         <a href="views/contacts.html">Contacts</a>
       </li>
       <li>
-        <a href="views/login.html">Log OUT</a>
+        <a href="#" onclick="logout()">Log OUT</a>
       </li>
-          <li>
-        <a href="views/show.html">show</a>
-      </li>
+          <!--<li>
+        <a href="views/show.html" onclick="startTimer()">show</a>
+      </li>-->
       
     </ul>
   </div> 
-
+<script>
+   
+    function startTimer(){
+        $('#ms_timer1').countdowntimer({
+         minutes :1,
+         seconds :0,
+         size : "lg",
+         timeUp : timeisUp,
+         tickInterval: 1
+         });
+    }
+    function timeisUp() {
+  app.navigate("views/scoreCard.html","slide"); 
+    }
+ </script>
 </body>
 </html>
