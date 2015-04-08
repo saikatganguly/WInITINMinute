@@ -132,10 +132,9 @@
                 window['seconds_MS' + $this.attr('id')] = opts.seconds;
                 minutesSeconds($this, opts);
                 console.log("only minutes second "+opts.tickInterval );
-               
                 window['timer_MS' + $this.attr('id')] = setInterval(function () {
-                    console.log("hchcjhjhcj");
-                    minutesSeconds($this, opts)
+                console.log("hchcjhjhcj");
+                minutesSeconds($this, opts)
                 }, opts.tickInterval * 1000);
             } else if (options.hours != undefined && options.minutes == undefined && options.seconds != undefined) {
                 hours_HS = "";

@@ -1,18 +1,26 @@
-<div data-role="view" id="login" data-title="Login" data-layout="main"> 
-    <form action="#">
-       <table style="border: 0">
-            <tr>
-                <th><label>Username  </label></th>
-                <td><input type="text" value="" id="userName" placeholder="Enter Username"/></td>
-            </tr>
-            <tr>
-                 <th><label>Password </label></th>
-                <td><input type="password" value="" id="password" placeholder="Enter Password"/></td>
-            </tr> 
-            <tr>
-                <td><button id="acceptButton" type="submit" onClick="login()">Login</button></td>
-            </tr>   
-                
-        </table>
+<div data-role="view" id="login" data-title="Login" data-layout="main" data-before-show="isLoggedIn">
+    <form action="#" id="loginForm" onsubmit="return false;">
+         <div id="errMsg" class="error" style="height: 20px;"></div>
+       <div class="loginContent">
+            <div class="option">
+                <label class="label">Username  </label></th>
+                <div class="feild">
+                    <input type="text" name="userName" id="userName" placeholder="Enter Username" required  data-required-msg="Enter Username"  onfocus="removeMessage()"\>
+                    <!--<div id="errUserName" class="error"> </div>-->
+                    <span class="k-invalid-msg" data-for="userName"></span>
+               </div>
+           </div>
+             <div class="option">
+                 <label class="label">Password </label></th>
+                <div class="feild">
+                    <input type="password" name="password"  id="password" placeholder="Enter Password" required data-required-msg="Enter Password"  onfocus="removeMessage()"\>
+                    <!-- <div id="errPassword" class="error"> </div>-->
+                    <span class="k-invalid-msg" data-for="password"></span>
+                </div>
+           </div>
+            <div class="btnDiv">
+                <button id="acceptButton" type="submit" onClick="return login()"  class="k-button button" >Login</button>
+           <div class="feilds">    
+        </div>
     </form>
 </div>

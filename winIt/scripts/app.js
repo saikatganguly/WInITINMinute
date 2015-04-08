@@ -17,13 +17,20 @@
         scoreCard:{
            title: 'ScoreCard' 
         },
+        start:{
+           title: 'Start',
+           ds: new kendo.data.DataSource({
+            data: [{ }]
+          })
+         
+        },
         contacts: {
           title: 'Contacts',
           ds: new kendo.data.DataSource({
-            data: [{ id: 1, name: 'Bob' }, { id: 2, name: 'Mary' }, { id: 3, name: 'John' }]
+            data: [{ }]
           }),
           alert: function(e) {
-            alert(e.data.name);
+          
           }
         }
       }

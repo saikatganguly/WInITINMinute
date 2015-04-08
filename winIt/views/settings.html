@@ -1,3 +1,20 @@
-<div data-role="view" data-title="Settings" data-layout="main" data-model="APP.models.settings">
+<div data-role="view" data-title="Settings" data-layout="main" data-model="APP.models.settings" data-before-show="isLoggedIn">
   <h1 data-bind="html: title"></h1>
+    <a href="views/quiz.html" onclick="startTimer()">Quiz</a>
+<script>
+  
+    function startTimer(){
+        $('#ms_timer1').countdowntimer({
+         minutes :1,
+         seconds :0,
+         size : "lg",
+         timeUp : timeisUp,
+         tickInterval: 1
+         });
+        
+    }
+    function timeisUp() {
+  app.navigate("views/scoreCard.html","slide"); 
+    }
+ </script>
 </div>
