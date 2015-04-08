@@ -1,0 +1,62 @@
+.logo{
+    background: url('../images/logo.jpg') no-repeat;
+    width: 55%;
+    height: 165px;
+    float: left;
+    margin: 22% 0  0 30%;
+    background-size: 70%;
+}
+.loginContent{
+    width:100%;
+    height: auto;
+    border: 0;
+    text-align: center;
+}
+.km-flat .km-button{
+     background: url('../images/loginbtn.png') no-repeat; 
+     background-size: 100% 100%;
+}
+.button{
+    width: 69%;
+    height: 40px;
+}
+/*.button-img{
+     width: 233px;
+    height: 45px;
+}*/
+.option {
+    float: left;
+    width: 98%;
+    height: 45px;
+    margin: 1%;
+}
+.feild {
+    float: left;
+    width: 98%;
+}
+.btnDiv {
+    float: left;
+    width: 98%;
+}
+input[type="text"],input[type="password"]{
+    padding: 8px;
+    width: 70%;
+    background: url('../images/login_line.png') no-repeat 0 100%;
+    overflow: hidden;
+    border: 0;
+    background-size: 100%;
+    font-size: 15px;
+    color: #6C7379;
+}
+.km-root .km-pane .km-view .km-custom
+{
+    background-image: url('../images/login.jpg') no-repeat;
+    -webkit-background-clip: border-box;
+}
+.error {
+  float: left;
+  width: 100%;
+  text-align: center;
+  color: red;
+  height: 20px;
+}
