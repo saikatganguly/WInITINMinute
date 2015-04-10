@@ -1,26 +1,29 @@
-<div data-role="view" id="login" data-title="Login" data-layout="main" data-before-show="isLoggedIn">
+<div data-role="view" id="login" data-title="Login" data-before-show="changeUI">
     <form action="#" id="loginForm" onsubmit="return false;">
-         <div id="errMsg" class="error" style="height: 20px;"></div>
+        <div id="logo" class="logo"></div>
+         <div id="errMsg" class="error"></div>
        <div class="loginContent">
             <div class="option">
-                <label class="label">Username  </label></th>
                 <div class="feild">
-                    <input type="text" name="userName" id="userName" placeholder="Enter Username" required  data-required-msg="Enter Username"  onfocus="removeMessage()"\>
+                    <div class="login-icon"></div>
+                    <input type="text" name="userName" id="userName" class="textbox" placeholder="Login" required  data-required-msg="Enter Username"  onfocus="removeMessage()"\>
                     <!--<div id="errUserName" class="error"> </div>-->
-                    <span class="k-invalid-msg" data-for="userName"></span>
                </div>
+                 <span class="k-invalid-msg" data-for="userName"></span>
            </div>
              <div class="option">
-                 <label class="label">Password </label></th>
                 <div class="feild">
-                    <input type="password" name="password"  id="password" placeholder="Enter Password" required data-required-msg="Enter Password"  onfocus="removeMessage()"\>
+                     <div class="password-icon"></div>
+                    <input type="password" name="password"  id="password" class="textbox" placeholder="Password" required data-required-msg="Enter Password"  onfocus="removeMessage()"\>
                     <!-- <div id="errPassword" class="error"> </div>-->
-                    <span class="k-invalid-msg" data-for="password"></span>
                 </div>
+                  <span class="k-invalid-msg" data-for="password"></span>
            </div>
             <div class="btnDiv">
-                <button id="acceptButton" type="submit" onClick="return login()"  class="k-button button" >Login</button>
-           <div class="feilds">    
+                <a data-role="button" id="acceptButton" onclick="return login()" class="button">
+                   <!-- <img src="images/loginbtn.png" class="button-img">-->
+                </a>
+           </div>    
         </div>
     </form>
 </div>
