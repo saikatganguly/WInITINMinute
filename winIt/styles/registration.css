@@ -1,18 +1,11 @@
-.splash_logo{
-    background: url('../images/logo.jpg') no-repeat;
-    width: 55%;
-    height: 165px;
-    float: left;
-    margin: 48% 0  0 30%;
-    background-size: 70%;
-}
+
 .logo{
     background: url('../images/logo.jpg') no-repeat;
-    width: 55%;
+    width: 45%;
     height: 155px;
     float: left;
-    margin: 19% 0  0 30%;
-    background-size: 70%;
+    margin: 2% 0  0 30%;
+    background-size: 70%; 
 }
 .logo-android {
   background: url('../images/logo.jpg') no-repeat;
@@ -22,25 +15,50 @@
   margin: 19% 0 0 30%;
   background-size: 70%;
 }
-.loginContent{
+.registrationContent{
     float: left;
     width:100%;
     height: auto;
     border: 0;
     text-align: center;
 }
-#acceptButton{
-     background: url('../images/loginbtn.png') no-repeat; 
+/*.km-flat .km-button {
+     background: url('../images/signup.png') no-repeat; 
      background-size: 100% 100%;
+}*/
+#signup_btn{
+    
+    background: url('../images/signup.png') no-repeat; 
+    background-size: 100% 100%; 
+    width: 100%;
+    height: 40px; 
+}
+#login_btn{
+    
+    background: url('../images/login(1).png') no-repeat; 
+    background-size: 100% 100%;
+    width: 100%;
+    height: 40px; 
 }
 .button{
     width: 69%;
     height: 40px;
 }
-/*.button-img{
-     width: 233px;
-    height: 45px;
-}*/
+#fb_btn{
+   background: url('../images/fb.png') no-repeat; 
+  /* background-size: 100% 100%;*/
+    width: 71px;
+    height:  71px; 
+     border:none;
+}
+#twitter_btn{
+   background: url('../images/twitter.png') no-repeat; 
+   /* background-size: 100% 100%;*/
+    width: 71px;
+    height:  71px; 
+    border:none;
+}
+
 .option {
     float: left;
     width: 98%;
@@ -53,27 +71,19 @@
     text-align: center;
     float: left;
     margin-left: 15%;
+      margin-top: -50px;
 }
-.login-icon {
-    float: left;
-    width: 12%;
-    height: 29px;
-    background: url('../images/login.jpg') no-repeat;
-    background-size: 100%;
-      margin-left: 3%;
-    margin-top: 2%;
-}
-.password-icon {
-    float: left;
-    width: 11%;
-    height: 36px;
-    background: url('../images/password.jpg') no-repeat;
-    background-size: 93%;
-    margin-left: 3%;
-}
-.btnDiv {
+
+.signup_btnDiv {
     float: left;
     width: 98%;
+    margin-top:-15%;
+}
+
+.login_btnDiv {
+    float: left;
+    width: 98%;
+    margin-top:-2%;
 }
 .textbox{
     padding-left: 5px;
@@ -82,7 +92,7 @@
     border: 0;
     font-size: 17px;
     color: #6C7379;
-   // background-color: #3C4043;
+    background-color: #3C4043;
     padding-top: 5px;
 }
 .custom-icon

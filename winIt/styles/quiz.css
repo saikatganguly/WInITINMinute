@@ -1,2 +1,74 @@
-body {
+#startQuiz{
+     background: url('../images/start_quiz.png') no-repeat; 
+     background-size: 100% 100%;
+     width: 108%;
+     height: 40px;
+}
+#ms_timer{
+    color: white;
+    font-size: 18px;
+    opacity: 0.8;
+    font-weight: lighter;
+}
+.timer-div{
+    width: 35%;
+    border-radius: 4px;
+    margin-left: 35%;
+    margin-top: 2%;
+    border: 1px solid #E1384B;
+    text-align: center;
+    background: #E1384B;
+    height: 32px;
+    padding-top: 1%;
+    color: white;
+    opacity: 0.7;
+    font-weight: lighter;
+}
+.km-content h3{
+   margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 3.5%;
+   margin-top: 3%;
+}
+.question{
+    background: #F3F1F2;
+    width: 96%;
+    height: auto;
+    float: left;
+    font-weight: lighter;
+    padding: 5%;
+   /* padding: 10% 5% 10% 5%;*/
+}
+#option-list {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    margin-bottom: 3%;
+    height: 41px;
+    background: #E0DEDF;
+    width: 96%;
+    margin-left: 2%;
+}
+.btnDiv {
+    float: left;
+    width: 98%;
+    margin-left: 1%;
+    margin-top: -1%;
+}
+#nextBtn{
+     background: url('../images/next_btn.jpg') no-repeat; 
+     background-size: 100% 100%;
+     width: 99%;
+     height: 40px;
+}
+input[type="radio"]{
+    background: url('../images/unchecked.png') no-repeat;
+}
+.yahoo-img {
+    background: url('../images/yahoo.png') no-repeat;
+    width: 94%;
+    height: 50px;
+    float: left;
+    margin-left: 3%;
+    margin-top: 14%;
+    background-size: 100% 100%;
 }

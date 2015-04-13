@@ -65,10 +65,11 @@
        $("#header").hide("fast");
    });*/
     function startTimer(){
-        $('#ms_timer1').countdowntimer({
+        $('#ms_timer').countdowntimer({
          minutes :1,
          seconds :0,
          size : "lg",
+         timeSeparator : ".",
          timeUp : timeisUp
          });
     }

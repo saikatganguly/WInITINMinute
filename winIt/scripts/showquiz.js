@@ -5,7 +5,7 @@ var user= {
         questionIndex:0,
         score:0
 };
-var minutes=1;
+var minutes=10;
 var seconds=0;
 function initQuiz(){
     data.questions=
@@ -39,10 +39,11 @@ function initQuiz(){
      if(user.questionIndex<=4){
     changeQuection(user.questionIndex);
      }
-    $('#ms_timer1').countdowntimer({
+    $('#ms_timer').countdowntimer({
           minutes :minutes,
           seconds :seconds,
           size : "lg",
+          timeSeparator : ".",
           timeUp : timeisUp
       });
 }
