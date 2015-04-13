@@ -50,7 +50,7 @@
         skin: 'flat',
 
         // the application needs to know which view to load first
-        initial: 'views/login.html'
+        initial: 'views/registration.html'
       });
 
     }, false);
