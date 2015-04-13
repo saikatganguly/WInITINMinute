@@ -6,10 +6,11 @@ var everlive = new Everlive({
 function changeUI(){
     if (kendo.support.mobileOS.android) {
         /*alert(kendo.support.mobileOS);*/
-        $('#logo').css('height','125px');
-        $('.option').css('height','47px');
+      //  $('#logo').css('height','150px');
+        $('.option').css('height','50px');
         $('.login-icon').css('height','33px');
-        $('.password-icon').css('height','37px');
+         $('.loginContent').css('margin-top','-6%');
+    //    $('.password-icon').css('height','37px');
     }
 }
 function beforeShow(beforeShowEvt) {
@@ -21,13 +22,11 @@ function beforeShow(beforeShowEvt) {
     }
 }
 function show(){
-    alert("show");
+ //   alert("show");
        $("#header").show("fast");
 }
 function hide(){
-       alert("hide");
-    alert(e.view.header);
-   // e.view.header.find(".one").hide();
+       //alert("hide");
        $("#header").hide("fast");
 }
 function login(){

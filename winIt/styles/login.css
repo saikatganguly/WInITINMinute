@@ -9,12 +9,12 @@
 .logo{
     background: url('../images/logo.jpg') no-repeat;
     width: 55%;
-    height: 165px;
+    height: 155px;
     float: left;
     margin: 19% 0  0 30%;
     background-size: 70%;
 }
-.km-ios5 .logo {
+.logo-android {
   background: url('../images/logo.jpg') no-repeat;
   width: 55%;
   height: 125px;
@@ -45,7 +45,6 @@
     float: left;
     width: 98%;
     height: 54px;
-    margin: 1%;
 }
 .feild {
     width: 68%;
@@ -67,7 +66,7 @@
 .password-icon {
     float: left;
     width: 11%;
-    height: 40px;
+    height: 33px;
     background: url('../images/password.jpg') no-repeat;
     background-size: 93%;
     margin-left: 3%;
@@ -77,14 +76,14 @@
     width: 98%;
 }
 .textbox{
-    padding: 8px;
+    padding-left: 5px;
     width: 82%;
-   
     overflow: hidden;
     border: 0;
     font-size: 17px;
     color: #6C7379;
    // background-color: #3C4043;
+    padding-top: 5px;
 }
 .custom-icon
 {
