@@ -57,7 +57,7 @@
 .login-icon {
     float: left;
     width: 12%;
-    height: 35px;
+    height: 29px;
     background: url('../images/login.jpg') no-repeat;
     background-size: 100%;
       margin-left: 3%;
@@ -66,7 +66,7 @@
 .password-icon {
     float: left;
     width: 11%;
-    height: 33px;
+    height: 36px;
     background: url('../images/password.jpg') no-repeat;
     background-size: 93%;
     margin-left: 3%;
