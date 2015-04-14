@@ -9,7 +9,9 @@ function register(){
 var password = $("#password").val();
 var attrs = {
     Email: $("#email").val(),
-    Name: $("#name").val()
+    Name: $("#name").val(),
+    Country : "" , 
+    City : ""
 };
     alert(username +"===="+password);
     everlive.Users.register(username,
