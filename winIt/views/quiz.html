@@ -1,4 +1,4 @@
-<div data-role="view" id="showquizpage" data-title="Quiz" data-layout="main">
+<div data-role="view" id="showquizpage" data-title="Quiz" data-layout="main" data-before-show="addRightItem">
    <div class="timer-div">
        <span id="ms_timer" data-align="right"></span>
        seconds
@@ -7,7 +7,9 @@
     <div  class="btnDiv">
         <a id="nextBtn" class="button" onclick="next()" data-role="button"></a>
     </div>
-    <div class="yahoo-img"></div>
+    <div data-role="footer">
+        <div class="yahoo-img"></div>
+    </div>
 <script type="text/x-kendo-template" id="temp">
     <div>
         <h3 class="question">#= question #</h3>

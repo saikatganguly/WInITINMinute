@@ -54,8 +54,28 @@
       });
 
     }, false);
-
-
-
    
 }());
+
+
+    function startTimer(){
+        $('#ms_timer').countdowntimer({
+         minutes :1,
+         seconds :0,
+         size : "lg",
+         timeSeparator : ".",
+         timeUp : timeisUp
+         });
+    }
+  function timeisUp() {
+  app.navigate("views/scoreCard.html","slide"); 
+    }
+  function beforeShow(beforeShowEvt) {
+    if(app.view().id == "views/login.html" || app.view().id == "views/registration.html") {
+         beforeShowEvt.preventDefault();
+    }
+}
+function addRightItem(){
+    //alert("addRightItem");
+    $(".km-rightitem").css("display","block");
+}

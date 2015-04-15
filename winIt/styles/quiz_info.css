@@ -1,0 +1,33 @@
+.quiz_info_logo{
+    background: url('../images/logo.jpg') no-repeat;
+    width: 50%;
+    height: 175px;
+    float: left;
+    margin: 2% 0  0 30%;
+    background-size: 70%; 
+}
+#start_btn{
+    
+    background: url('../images/start_quiz.png') no-repeat; 
+    background-size: 100% 100%;
+    width: 69%;
+    height: 40px; 
+}
+
+.start_btnDiv {
+    float: left;
+    width: 98%;
+   margin-left:20%;
+}
+
+.img-div{
+   background: url('../images/about_img.png') no-repeat;  
+   width: 94%;
+  height: 180px;
+  background-size: 100%;
+  margin: 40% 0 0 3%;
+}
+
+.span12{
+      width: 100%;
+}

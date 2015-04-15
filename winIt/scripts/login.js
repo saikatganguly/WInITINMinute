@@ -13,14 +13,6 @@ function changeUI(){
         $('.password-icon').css('height','31px');
     }
 }
-function beforeShow(beforeShowEvt) {
-    if(app.view().id == "views/login.html") {
-         $("#header").hide("fast");
-         beforeShowEvt.preventDefault();
-         $("#drawerBtn").hide("fast");
-         $("#appDrawer").hide("fast");
-    }
-}
 function show(){
  //   alert("show");
        $("#header").show("fast");
@@ -30,6 +22,8 @@ function hide(){
        $("#header").hide("fast");
 }
 function login(){
+    var email= localStorage.getItem('email');
+    alert(email);
     var validator = $("#loginForm").kendoValidator().data("kendoValidator");
               //  alert("Checking alert in login");
                 var username = $("#userName").val();

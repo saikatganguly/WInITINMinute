@@ -1,10 +1,50 @@
-.km-flat, .km-flat .km-navbar, .km-flat .km-detail, .km-flat .km-content, .textbox{background-color: #3C4043; border-color:#4d4d4d; color: #6C7379;}
-
+.km-flat, .km-flat .km-navbar, .km-flat .km-detail, .km-flat .km-content, .km-footer, .textbox{background-color: #3C4043; border-color:#4d4d4d; color: #6C7379;}
 .km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
-.heading {
-  text-align: center;
+.km-widget.km-navbar {
+    background: #6D747A;
+    color: #ffffff;
+    height: 37px;
 }
-.timer{
-    float: right; 
-    margin-top: 2%;
+.km-flat .km-button {
+  border: none;
+  background-color: #6D747A;
+}
+.km-navbar .km-button {
+  margin-top: 0;
+}
+.km-leftitem {
+  left: 0;
+}
+.km-view-title{
+  margin-top: -0.2em;
+}
+.km-rightitem{
+    display: none;
+    color: #CAD5DB;
+    font-weight: lighter;
+}
+.km-flat .km-loader>*:not(h1), 
+.km-flat .km-filter-wrap>input, 
+.km-flat .km-switch-handle.km-state-active, 
+.km-root .km-flat .km-scroller-refresh span:not(.km-template),
+.km-flat .km-loader,
+.km-flat .km-loading, 
+.km-flat .km-loader .km-loading-left, 
+.km-flat .km-loader .km-loading-right, 
+.km-flat .km-load-more.km-scroller-refresh .km-icon, 
+.km-flat .km-scroller-pull.km-scroller-refresh .km-icon, 
+.km-flat .km-scroller-refresh .km-loading-left, 
+.km-flat .km-scroller-refresh .km-loading-right,
+.km-flat .km-loader:before, 
+.km-flat .km-loading:after{
+    background: url('../images/logo.png') no-repeat;
+    width: .10em;
+    height: .70em;
+    text-align: center;
+    margin: 58% 0  0 38%;
+    background-size: 100%;
+     color: transparent;
+}
+.km-loader{
+    opacity: 1;
 }

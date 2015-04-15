@@ -5,7 +5,7 @@ var user= {
         questionIndex:0,
         score:0
 };
-var minutes=10;
+var minutes=1;
 var seconds=0;
 function initQuiz(){
     data.questions=

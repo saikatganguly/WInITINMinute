@@ -1,5 +1,5 @@
 .splash_logo{
-    background: url('../images/logo.jpg') no-repeat;
+    background: url('../images/logo.png') no-repeat;
     width: 55%;
     height: 165px;
     float: left;
@@ -7,16 +7,16 @@
     background-size: 70%;
 }
 .logo{
-    background: url('../images/logo.jpg') no-repeat;
-    width: 55%;
+    background: url('../images/logo.png') no-repeat;
+    width: 40%;
     height: 155px;
     float: left;
-    margin: 19% 0  0 30%;
+    margin: 15% 0  0 30%;
     background-size: 70%;
 }
 .logo-android {
-  background: url('../images/logo.jpg') no-repeat;
-  width: 55%;
+  background: url('../images/logo.png') no-repeat;
+  width: 40%;
   height: 125px;
   float: left;
   margin: 19% 0 0 30%;

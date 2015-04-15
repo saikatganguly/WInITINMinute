@@ -2,6 +2,15 @@ var everlive = new Everlive({
     apiKey: "KGCVGkuoa3Zw0Auj",
     scheme: "https"
 });
+ var country_name;
+ var city_name;
+$( document ).ready(function() {
+// geoplugin_countryName();
+    country_name= geoplugin_countryName();
+    city_name=geoplugin_city();
+alert(country_name+","+geoplugin_city()); 
+    $('#geoLocation').text(city_name+","+country_name);
+});
 function changeUI(){
     if (kendo.support.mobileOS.android) {
         /*alert(kendo.support.mobileOS);*/
@@ -33,7 +42,9 @@ function register(){
 var password = $("#password").val();
 var attrs = {
     Email: $("#email").val(),
-    Name: $("#name").val()
+    Name: $("#name").val(),
+    country : country_name,
+    location : city_name
 };
     alert(username +"===="+password);
     everlive.Users.register(username,

@@ -6,7 +6,7 @@
         <link href="styles/main.css" rel="stylesheet" />
         <link href="styles/kendo.common.min.css" rel="stylesheet" />
         <link href="styles/kendo.default.min.css" rel="stylesheet" />
-        <link href="styles/login.css" rel="stylesheet" />
+        <!--<link href="styles/login.css" rel="stylesheet" />-->
         <link href="styles/quiz.css" rel="stylesheet" />
       <!--  <link href="styles/kendo-ui-theme.css" rel="stylesheet" />-->
         <script src="cordova.js"></script>
@@ -16,14 +16,16 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/jquery.countdownTimer.js"></script> 
         <script src="scripts/everlive.all.js"></script>
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 </head>
    
 <body>
     <div data-role="layout" data-id="main">
     <div data-role="header" id="header">
-      <div data-role="navbar">
+      <div data-role="navbar" id="navbar">
           <span data-role="view-title"></span>
           <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button" id="drawerBtn"></a>
+          <span class="right_item" data-align="right">Region</span>
       </div>
     </div>
          
@@ -32,11 +34,11 @@
   </div>
 
   <!-- application drawer and contents -->
-  <div data-role="drawer" id="appDrawer" style="width: 270px" data-title="Navigation" data-before-show="beforeShow" data-transition="overlay: left">
+  <div data-role="drawer" id="appDrawer" style="width: 200px" data-title="Navigation" data-before-show="beforeShow">
     <div data-role="header">
       <div data-role="navbar">
         <!--<span data-role="view-title"></span>-->
-      </div>
+     </div>
     </div>
     <ul data-role="listview">
       <li>
@@ -60,22 +62,5 @@
       
     </ul>
   </div> 
-<script>
-  /* $(function(){
-       $("#header").hide("fast");
-   });*/
-    function startTimer(){
-        $('#ms_timer').countdowntimer({
-         minutes :1,
-         seconds :0,
-         size : "lg",
-         timeSeparator : ".",
-         timeUp : timeisUp
-         });
-    }
-  function timeisUp() {
-  app.navigate("views/scoreCard.html","slide"); 
-    }
- </script>
 </body>
 </html>
