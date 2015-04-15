@@ -1,37 +1,61 @@
-<div data-role="view" id="login" data-title="Login" data-layout="main" data-before-show="isLoggedIn">
-    <form action="#" id="loginForm" onsubmit="return false;">
+<div data-role="view" id="register" data-title="register"  data-before-show="register">
+     
+    <form action="#" id="register" onsubmit="return false;">
+          <div id="logo" class="registration_logo"></div>
          <div id="errMsg" class="error" style="height: 20px;"></div>
-       <div class="loginContent">
+       <div class="registrationContent">
             <div class="option">
-                <label class="label">Name  </label></th>
+                
                 <div class="feild">
-                    <input type="text" name="name" id="name" placeholder="Enter Name" required  data-required-msg="Enter Name"  onfocus="removeMessage()"\>
-                    <!--<div id="errUserName" class="error"> </div>-->
+                    
+                    <input type="text" name="name"  id="name"  class="textbox" placeholder="Enter Name" required  data-required-msg="Enter Name"  onfocus="removeMessage()"\>
+                  
                     <span class="k-invalid-msg" data-for="name"></span>
                </div>
            </div>
         
         <div class="option">
-                <label class="label">Email  </label></th>
+             
                 <div class="feild">
-                    <input type="email" name="email" id="email" placeholder="Enter Email" required  data-required-msg="Enter Email" data-email-msg="Email format is not valid"  onfocus="removeMessage()"\>
-                    <!--<div id="errUserName" class="error"> </div>-->
+                    <input type="email" name="email" id="email" class="textbox" placeholder="Enter Email" required  data-required-msg="Enter Email" data-email-msg="Email format is not valid"  onfocus="removeMessage()"\>
+                  
                     <span class="k-invalid-msg" data-for="email"></span>
                </div>
-           </div>
+       </div>
         
              <div class="option">
-                 <label class="label">Password </label></th>
+                 
                 <div class="feild">
-                    <input type="password" name="password"  id="password" placeholder="Enter Password" required data-required-msg="Enter Password"  onfocus="removeMessage()"\>
-                    <!-- <div id="errPassword" class="error"> </div>-->
+                    <input type="password" name="password"  id="password" class="textbox" required data-required-msg="Enter Password"  placeholder="Enter Password" onfocus="removeMessage()"\>
+                   
                     <span class="k-invalid-msg" data-for="password"></span>
+                    <!--<label id="geoLocation"></label>-->
                 </div>
+                
            </div>
-            <div class="btnDiv">
-                <button id="acceptButton" type="submit" onClick="return register()"  class="k-button button" >Registration</button>
-           <div class="feilds">    
+           
+           
+                  <div class="feild"> <label id="geoLocation" style="text-align:left;"></label></div>
+           
+          
+            <div class="signup_btnDiv">
+                 <a data-role="button" href="views/login.html" id="signup_btn" onclick="return register()" ></a>
         </div>
-    </form>
+         <div style="padding-top:5px;">
+               <span>continue with us</span>
+           </div>
+         
+               <div id="social">
+                   <span id="fb_icon_height"><a data-role="button"  id="fb_btn" href="#" ></a></span>
+                    <span id="tw_icon_height"><a data-role="button" href="#"  id="twitter_btn"></a></span>
+                </div>
+              <div class="login_btnDiv">
+                <a data-role="button"  id="login_btn" href="views/login.html"></a>
+        </div>
+          
+    </form> 
+           
+   <link href="styles/registration.css" rel="stylesheet" />
 <script src="scripts/registration.js"></script>
+
 </div>

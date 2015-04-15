@@ -1,6 +1,7 @@
 var data={}; 
 var questionTemplate = null;
  var selected = null;
+var interval = null;
 var user= {
         questionIndex:0,
         score:0
@@ -39,10 +40,11 @@ function initQuiz(){
      if(user.questionIndex<=4){
     changeQuection(user.questionIndex);
      }
-    $('#ms_timer1').countdowntimer({
+    $('#ms_timer').countdowntimer({
           minutes :minutes,
           seconds :seconds,
           size : "lg",
+          timeSeparator : ".",
           timeUp : timeisUp
       });
 }
@@ -56,10 +58,10 @@ function restart(){
     $("#user_score").empty(); 
 }
 function next(){
-    console.log("next**************");
-    if(data.questions[user.questionIndex].answer == selected) {
+    //alert("next**************");
+   /* if(data.questions[user.questionIndex].answer == selected) {
        alert(""+user.score++);
-     }  
+     }  */
     if(user.questionIndex>3){
        timeisUp();
        //displayStatus();
@@ -70,6 +72,29 @@ function next(){
 }
 function activitiesChanged(id){
      selected = $("#"+id).val();
+    var tabId = id.split("_").pop();
+    var answerId;
+     if(data.questions[user.questionIndex].answer == selected) {
+         user.score++
+         $('#optionList_'+tabId).css('background','#E0DEDF');
+         $('#answerId').css('background','#E0DEDF');
+         if(interval)
+             clearInterval(interval);
+         next();
+     } 
+    else{
+        $('#optionList_'+tabId).css('background','#E55849');
+        for(var i=0; i<=3; i++){
+            if(data.questions[user.questionIndex].options[i] == data.questions[user.questionIndex].answer){
+                $('#optionList_'+i).css('background','#37DD52');
+                answerId = 'optionList_'+i;
+            }
+        }
+         interval = setInterval(function(){blink(answerId)}, 1000);
+    }
+}          
+function blink(id) {
+     $("#"+id).fadeTo(100, 0.1).fadeTo(200, 1.0);
 }
 function timeisUp() {
     console.log("Times up**************");
@@ -100,3 +125,14 @@ function changeQuection(index){
         $("#results").html(questionTemplate(data.questions[index]));  
 }
 initQuiz();
+function addRightItem(){   
+    //restart();
+    if(app.view().id == "views/quiz.html"){
+     var country = localStorage.getItem('country');
+     var city = localStorage.getItem('city');
+    $("#navbar #right_item").append(city+','+country);
+    }
+    else{
+        $("#navbar #right_item").text("");
+    }
+}

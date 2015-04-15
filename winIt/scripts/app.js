@@ -1,10 +1,7 @@
  var app;
 (function () {
-
     // store a reference to the application object that will be created
     // later on so that we can use it if need be
-   
-    
     // create an object to store the models for each view
     window.APP = {
       models: {
@@ -35,7 +32,6 @@
         }
       }
     };
-
     // this function is called by Cordova when the application is loaded by the device
     document.addEventListener('deviceready', function () {  
       
@@ -50,12 +46,26 @@
         skin: 'flat',
 
         // the application needs to know which view to load first
-        initial: 'views/registration.html'
+        initial: 'views/splash.html'
       });
 
     }, false);
-
-
-
-   
 }());
+
+function startTimer(){
+        $('#ms_timer').countdowntimer({
+         minutes :1,
+         seconds :0,
+         size : "lg",
+         timeSeparator : ".",
+         timeUp : timeisUp
+         });
+}
+function timeisUp() {
+  app.navigate("views/scoreCard.html","slide"); 
+}
+function beforeShow(beforeShowEvt) {
+    if(app.view().id == "views/login.html" || app.view().id == "views/registration.html") {
+         beforeShowEvt.preventDefault();
+    }
+}

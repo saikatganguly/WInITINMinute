@@ -1,16 +1,23 @@
-<div data-role="view" id="showquizpage" data-title="Quiz" data-layout="main">
-   <span id="ms_timer1" data-align="right"></span>
+<div data-role="view" id="showquizpage" data-title="WinItInMinute" data-layout="main" data-after-show="addRightItem">
+   <div class="timer-div">
+       <span id="ms_timer" data-align="right"></span>
+       seconds
+    </div>
     <div id="results"></div>
-    <br> 
-    <div><span><a  onclick="next()" data-role="button" style="background-color: green; color: white;" >Next</a></span></div>
+    <!--<div  class="btnDiv">
+        <a id="nextBtn" class="button" onclick="next()" data-role="button"></a>
+    </div>-->
+    <div data-role="footer">
+        <div class="yahoo-img"></div>
+    </div>
 <script type="text/x-kendo-template" id="temp">
     <div>
-        <h3>#= question #</h3>
-        <ul data-role="listview"  class="km-widget km-listview km-list">
+        <h3 class="question">#= question #</h3>
+        <ul id="option_ul" data-role="listview"  class="km-widget km-listview km-list">
             # for(var i = 0, l = options.length; i < l; i++){#
-            <li class="">
+            <li id="optionList_#:i#">
                 <label class="km-listview-label">
-                    <input class="option km-widget km-icon km-check" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#">
+                    <input class="" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#">
                     #= options[i] #
                 </label>
             </li>
