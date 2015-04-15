@@ -1,33 +1,36 @@
 .quiz_info_logo{
     background: url('../images/logo.jpg') no-repeat;
-    width: 50%;
-    height: 175px;
+    width: 45%;
+    height: 122px;
     float: left;
-    margin: 2% 0  0 30%;
-    background-size: 70%; 
+    margin: 0% 0  0 33%;
+    background-size: 60%; 
 }
 #start_btn{
-    
     background: url('../images/start_quiz.png') no-repeat; 
     background-size: 100% 100%;
     width: 69%;
     height: 40px; 
 }
-
 .start_btnDiv {
     float: left;
-    width: 98%;
+    width: 69%;
    margin-left:20%;
+     margin-top:7%;
 }
-
 .img-div{
-   background: url('../images/about_img.png') no-repeat;  
-   width: 94%;
-  height: 180px;
+  background: url('../images/about_img.png') no-repeat;  
+  width: 92%;
+  height: 220px;
   background-size: 100%;
-  margin: 40% 0 0 3%;
+  margin: 29% 0 0 5%;
 }
-
 .span12{
       width: 100%;
+    margin-top:-15px;
+    height:125px;
+   
+}
+.padding-top{
+  
 }
