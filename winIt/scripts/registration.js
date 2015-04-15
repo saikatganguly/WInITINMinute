@@ -10,31 +10,20 @@ $( document ).ready(function() {
     city_name=geoplugin_city();
 alert(country_name+","+geoplugin_city()); 
     $('#geoLocation').text(city_name+","+country_name);
+    localStorage.setItem('country',country_name);
+    localStorage.setItem('city',city_name);
 });
 function changeUI(){
     if (kendo.support.mobileOS.android) {
-        /*alert(kendo.support.mobileOS);*/
-      //  $('#logo').css('height','150px');
         $('.option').css('height','50px');
         $('.login-icon').css('height','27px');
-    //     $('.loginContent').css('margin-top','-6%');
         $('.password-icon').css('height','31px');
     }
 }
-function beforeShow(beforeShowEvt) {
-    if(app.view().id == "views/login.html") {
-         $("#header").hide("fast");
-         beforeShowEvt.preventDefault();
-         $("#drawerBtn").hide("fast");
-         $("#appDrawer").hide("fast");
-    }
-}
 function show(){
- //   alert("show");
        $("#header").show("fast");
 }
 function hide(){
-       //alert("hide");
        $("#header").hide("fast");
 }
 function register(){
@@ -46,7 +35,7 @@ var attrs = {
     country : country_name,
     location : city_name
 };
-    alert(username +"===="+password);
+    //alert(username +"===="+password);
     everlive.Users.register(username,
     password,
     attrs,

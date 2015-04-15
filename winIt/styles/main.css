@@ -19,7 +19,7 @@
   margin-top: -0.2em;
 }
 .km-rightitem{
-    display: none;
+   /* display: none;*/
     color: #CAD5DB;
     font-weight: lighter;
 }

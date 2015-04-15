@@ -5,25 +5,19 @@ var everlive = new Everlive({
 });
 function changeUI(){
     if (kendo.support.mobileOS.android) {
-        /*alert(kendo.support.mobileOS);*/
       //  $('#logo').css('height','150px');
         $('.option').css('height','50px');
         $('.login-icon').css('height','27px');
-    //     $('.loginContent').css('margin-top','-6%');
         $('.password-icon').css('height','31px');
     }
 }
 function show(){
- //   alert("show");
        $("#header").show("fast");
 }
 function hide(){
-       //alert("hide");
        $("#header").hide("fast");
 }
 function login(){
-    var email= localStorage.getItem('email');
-    alert(email);
     var validator = $("#loginForm").kendoValidator().data("kendoValidator");
               //  alert("Checking alert in login");
                 var username = $("#userName").val();
