@@ -65,7 +65,8 @@ function timeisUp() {
   app.navigate("views/scoreCard.html","slide"); 
 }
 function beforeShow(beforeShowEvt) {
-    if(app.view().id == "views/login.html" || app.view().id == "views/registration.html") {
+  //  $('.km-content.km-widget.km-scroll-wrapper').css('background','#090E11');
+    if(app.view().id === "views/login.html" || app.view().id === "views/registration.html") {
          beforeShowEvt.preventDefault();
     }
 }

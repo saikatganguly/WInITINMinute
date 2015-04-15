@@ -34,27 +34,36 @@
   </div>
 
   <!-- application drawer and contents -->
-  <div data-role="drawer" id="appDrawer" style="width: 200px" data-title="Navigation" data-before-show="beforeShow">
+  <div data-role="drawer" id="appDrawer" data-title="Navigation" data-before-show="beforeShow">
     <div data-role="header">
       <div data-role="navbar">
         <!--<span data-role="view-title"></span>-->
      </div>
     </div>
-    <ul data-role="listview">
+    <ul data-role="listview" id="drawer-list">
       <li>
-        <a href="views/home.html">Home</a>
+          <img src="images/selectquiz.png" class="drawer_icons">
+        <a href="views/home.html">Select Quiz</a>
       </li>
       <li>
-        <a href="views/quiz_info.html" onclick="timeUp">Quiz</a>
+          <img src="images/myhistory.png" class="drawer_icons">
+        <a href="#">My History</a>
       </li> 
       <li>
+          <img src="images/myprofile.png" class="drawer_icons">
+        <a href="#">My Profile</a>
+      </li>
+      <li>
+          <img src="images/rewards.png" class="drawer_icons">
+        <a href="#">Rewards</a>
+      </li>
+      <li>
+          <img src="images/settings.png" class="drawer_icons">
         <a href="views/settings.html">Settings</a>
       </li>
       <li>
-        <a href="views/registration.html">Registration</a>
-      </li>
-      <li>
-        <a href="#" onclick="logout()">Log OUT</a>
+          <img src="images/logout.png" class="drawer_icons">
+        <a href="#" onclick="logout()">Logout</a>
       </li>
           <!--<li>
         <a href="views/show.html" onclick="startTimer()">show</a>

@@ -48,3 +48,24 @@
 .km-loader{
     opacity: 1;
 }
+#drawer-list>li{
+    background: #090E11;
+    color: #FEFEFE;
+    opacity: 0.80;
+}
+.km-listview-link:after, .km-listview-label:after{
+    display: none;
+}
+#drawer-list>li a{
+    text-decoration: none;
+    float: left;
+    padding: 3% 0 0 7%;
+}
+.drawer_icons{
+    width: 14%; 
+    float: left;
+}
+#appDrawer{
+    width: 165px;
+    /*margin-top: 10%;*/
+}
