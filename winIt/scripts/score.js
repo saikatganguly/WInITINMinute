@@ -44,3 +44,25 @@ function createLocation(){
         alert(JSON.stringify(error));
       });
 }
+
+function getQuestionsFromCloud(){
+    
+}
+
+function login() {
+
+        FB.init({ 
+            appId: '1563251560601667', 
+            cookie: true, 
+            xfbml: true, 
+            status: true });
+
+        FB.getLoginStatus(function (response) {
+            if (response.authResponse) {
+               alert(response.authResponse.accessToken);
+            } else {
+                // do something...maybe show a login prompt
+            }
+        });
+
+    }
