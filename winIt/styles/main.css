@@ -63,11 +63,9 @@
     width: 100%;
 }
 .drawer_icons{
-    
-     width: 16%; 
+    width: 16%; 
     float: left;
-     height: 24px;
-     margin-right: 8%;
+    margin-right: 8%;
 }
 #appDrawer{
     width: 165px;

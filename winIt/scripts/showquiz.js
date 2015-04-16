@@ -97,6 +97,7 @@ function activitiesChanged(id){
                 answerId = 'optionList_'+i;
             }
         }
+        clearInterval(interval);
          interval = setInterval(function(){blink(answerId)}, 1000);
     }
 }          
