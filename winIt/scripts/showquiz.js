@@ -1,7 +1,8 @@
 var data={}; 
 var questionTemplate = null;
- var selected = null;
+var selected = null;
 var interval = null;
+var previousId = null;
 var user= {
         questionIndex:0,
         score:0
@@ -38,7 +39,7 @@ function initQuiz(){
         }, 
         ];
      if(user.questionIndex<=4){
-    changeQuection(user.questionIndex);
+        changeQuection(user.questionIndex);
      }
     $('#ms_timer').countdowntimer({
           minutes :minutes,
@@ -46,10 +47,11 @@ function initQuiz(){
           size : "lg",
           timeSeparator : ".",
           timeUp : timeisUp
-      });
+    });
 }
 function restart(){
     console.log("restart**************");
+     clearInterval(interval);
     user.questionIndex=0;
     user.score=0;
     app.navigate("views/quiz.html","slide"); 
@@ -71,21 +73,26 @@ function next(){
       changeQuection(user.questionIndex);  
 }
 function activitiesChanged(id){
+      var answerId = null;
      selected = $("#"+id).val();
-    var tabId = id.split("_").pop();
-    var answerId;
-     if(data.questions[user.questionIndex].answer == selected) {
-         user.score++
+        var tabId = id.split("_").pop();
+     if(previousId!==null){
+         previousId.css('background','#E0DEDF');
+     }
+  
+     if(data.questions[user.questionIndex].answer === selected) {
+         user.score++;
          $('#optionList_'+tabId).css('background','#E0DEDF');
          $('#answerId').css('background','#E0DEDF');
-         if(interval)
+       //  alert(interval);
              clearInterval(interval);
          next();
      } 
     else{
-        $('#optionList_'+tabId).css('background','#E55849');
+       previousId = $('#optionList_'+tabId).css('background','#E55849');
         for(var i=0; i<=3; i++){
-            if(data.questions[user.questionIndex].options[i] == data.questions[user.questionIndex].answer){
+            if(data.questions[user.questionIndex].options[i] === data.questions[user.questionIndex].answer){
+                 'optionList_'+tabId;
                 $('#optionList_'+i).css('background','#37DD52');
                 answerId = 'optionList_'+i;
             }
@@ -102,7 +109,7 @@ function timeisUp() {
 }
 
 function displayStatus(){
-     if(user.score==5){
+     if(user.score===5){
          // alert("score win  "+user.score);
           $("#quiz_result").text("congrates you have won the game");    
           $("#user_score").text(user.score);  
@@ -127,7 +134,7 @@ function changeQuection(index){
 initQuiz();
 function addRightItem(){   
     //restart();
-    if(app.view().id == "views/quiz.html"){
+    if(app.view().id === "views/quiz.html"){
      var country = localStorage.getItem('country');
      var city = localStorage.getItem('city');
     $("#navbar #right_item").append(city+','+country);

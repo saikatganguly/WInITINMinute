@@ -59,11 +59,15 @@
 #drawer-list>li a{
     text-decoration: none;
     float: left;
-    padding: 3% 0 0 7%;
+    padding: 6% 0 2% 7%;
+    width: 100%;
 }
 .drawer_icons{
-    width: 14%; 
+    
+     width: 16%; 
     float: left;
+     height: 24px;
+     margin-right: 8%;
 }
 #appDrawer{
     width: 165px;
