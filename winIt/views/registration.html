@@ -2,31 +2,31 @@
      
     <form action="#" id="register" onsubmit="return false;">
           <div id="logo" class="registration_logo"></div>
-         <div id="errMsg" class="error" style="height: 20px;"></div>
+         <div id="errMsg" class="registration_error" style="height: 20px;"></div>
        <div class="registrationContent">
-            <div class="option">
+            <div class="registration_option">
                 
-                <div class="feild">
+                <div class="registration_feild">
                     
-                    <input type="text" name="name"  id="name"  class="textbox" placeholder="Enter Name" required  data-required-msg="Enter Name"  onfocus="removeMessage()"\>
+                    <input type="text" name="name"  id="name"  class="registration_textbox" placeholder="Enter Name" required  data-required-msg="Enter Name"  onfocus="removeMessage()"\>
                   
                     <span class="k-invalid-msg" data-for="name"></span>
                </div>
            </div>
         
-        <div class="option">
+        <div class="registration_option">
              
-                <div class="feild">
-                    <input type="email" name="email" id="email" class="textbox" placeholder="Enter Email" required  data-required-msg="Enter Email" data-email-msg="Email format is not valid"  onfocus="removeMessage()"\>
+                <div class="registration_feild">
+                    <input type="email" name="email" id="email" class="registration_textbox" placeholder="Enter Email" required  data-required-msg="Enter Email" data-email-msg="Email format is not valid"  onfocus="removeMessage()"\>
                   
                     <span class="k-invalid-msg" data-for="email"></span>
                </div>
        </div>
         
-             <div class="option">
+             <div class="registration_option">
                  
-                <div class="feild">
-                    <input type="password" name="password"  id="password" class="textbox" required data-required-msg="Enter Password"  placeholder="Enter Password" onfocus="removeMessage()"\>
+                <div class="registration_feild">
+                    <input type="password" name="password"  id="password" class="registration_textbox" required data-required-msg="Enter Password"  placeholder="Enter Password" onfocus="removeMessage()"\>
                    
                     <span class="k-invalid-msg" data-for="password"></span>
                     <!--<label id="geoLocation"></label>-->
@@ -35,7 +35,7 @@
            </div>
            
            
-        <div class="feild"> <label id="geoLocation" style="text-align:left;"></label></div>
+        <div class="registration_feild"> <label id="geoLocation" style="text-align:left;"></label></div>
            
           
             <div class="signup_btnDiv">
@@ -59,6 +59,5 @@
            
 <link href="styles/registration.css" rel="stylesheet" />
 <script src="scripts/registration.js"></script>
- 
 
 </div>
