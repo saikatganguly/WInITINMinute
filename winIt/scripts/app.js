@@ -52,8 +52,9 @@ var app;
         // the application needs to know which view to load first
         initial: 'views/splash.html'
       });
-
+        document.addEventListener("backbutton", onBackButton, true);
     }, false);
+    
 }());
 
 function startTimer(){
@@ -81,3 +82,22 @@ function stopTimer() {
           clearInterval(window['timer_MS' + 'ms_timer']);
      }
  }
+function onBackButton() {
+    var item = app.view().id;
+   
+        switch (item) {
+                 case "views/home.html":{
+                     navigator.app.exitApp();
+                     break;
+                 }
+                 case "views/quiz.html":{
+                    confirmExitQuiz();
+                     break;
+                }
+                 case "views/scoreCard.html":{
+                    app.navigate("views/home.html","slide"); 
+                    break;
+                }
+       }
+
+}

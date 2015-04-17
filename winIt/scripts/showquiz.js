@@ -1,4 +1,3 @@
-
 var data={}; 
 var questionTemplate = null;
 var selected = null;
@@ -50,6 +49,7 @@ function initQuiz(){
           timeUp : timeisUp
     });
     isQuizVisited = true;
+    confirmExitQuiz();
 }
 function restart(){
     console.log("restart**************");
@@ -146,3 +146,37 @@ function addRightItem(){
         $("#navbar #right_item").text("");
     }
 }
+$("#openButton").click(function(){
+      $("#confirm").kendoWindow({
+        title: "Confirm Exit",
+        modal: true,
+        width: 200,
+        height: 100
+      }).data("kendoWindow").center();
+    /*var window = $("#confirm").kendoWindow({
+            title: "Confirm Exit",
+            resizable: false,
+            modal: true
+        });
+    
+     window.data("kendoWindow")
+        .content($("#confirmTemplate").html())
+        .center().open();*/
+});
+/*function confirmExitQuiz(){
+      $("#confirm").kendoWindow({
+        title: "Confirm Exit",
+        modal: true,
+        width: 200,
+        height: 100
+      }).data("kendoWindow").center();*/
+    /*var window = $("#confirm").kendoWindow({
+            title: "Confirm Exit",
+            resizable: false,
+            modal: true
+        });
+    
+     window.data("kendoWindow")
+        .content($("#confirmTemplate").html())
+        .center().open();*/
+//}
