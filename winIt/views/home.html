@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Home"  data-model="APP.models.home">
+<div data-role="view" data-title="Home"  data-model="APP.models.home" data-before-show="stopTimer">
     <div id="" class="quiz_info_logo"></div>
     <div class="img-div">
     </div>
@@ -16,18 +16,16 @@
     <link href="styles/quiz_info.css" rel="stylesheet" />
 </div>
 <script>
-    
+ 
 function startQuiz(){
-    //alert("startQuiz");
     if(isQuizVisited == false){
-     //   alert(isQuizVisited);
          app.navigate("views/quiz.html","slide"); 
     }
     else{
-       //  alert(isQuizVisited);
-        app.navigate("views/quiz.html","slide"); 
-        clearInterval(interval);
-        initQuiz();
+       // app.navigate("views/quiz.html","slide"); 
+       /* clearInterval(interval);
+        initQuiz();*/
+        restart();
     }
 }
 </script>

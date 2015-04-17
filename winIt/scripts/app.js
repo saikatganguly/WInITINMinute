@@ -76,3 +76,8 @@ function beforeShow(beforeShowEvt) {
          beforeShowEvt.preventDefault();
     }
 }
+function stopTimer() {
+     if(isQuizVisited == true){
+          clearInterval(window['timer_MS' + 'ms_timer']);
+     }
+ }

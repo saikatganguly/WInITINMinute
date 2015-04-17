@@ -42,7 +42,7 @@ function initQuiz(){
      if(user.questionIndex<=4){
         changeQuection(user.questionIndex);
      }
-    $('#ms_timer').countdowntimer({
+     $('#ms_timer').countdowntimer({
           minutes :minutes,
           seconds :seconds,
           size : "lg",
