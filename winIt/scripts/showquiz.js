@@ -1,3 +1,4 @@
+
 var data={}; 
 var questionTemplate = null;
 var selected = null;
@@ -48,6 +49,7 @@ function initQuiz(){
           timeSeparator : ".",
           timeUp : timeisUp
     });
+    isQuizVisited = true;
 }
 function restart(){
     console.log("restart**************");
@@ -120,7 +122,7 @@ function displayStatus(){
          $("#user_score").text(user.score);  
          $("#quiz_result").text("you have lost thae game"); 
          redirectToScoreBoard();
-        }    
+     }    
 }
 function redirectToScoreBoard(){
     console.log("redirectToScoreBoard**************");

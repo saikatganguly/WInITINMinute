@@ -1,4 +1,5 @@
- var app;
+var isQuizVisited = false; 
+var app;
 (function () {
     // store a reference to the application object that will be created
     // later on so that we can use it if need be
@@ -6,7 +7,10 @@
     window.APP = {
       models: {
         home: {
-          title: 'DashBoard'
+          title: 'DashBoard',
+             ds: new kendo.data.DataSource({
+            data: [{ }]
+          })
         },
         settings: {
           title: 'Settings'
@@ -65,6 +69,8 @@ function timeisUp() {
   app.navigate("views/scoreCard.html","slide"); 
 }
 function beforeShow(beforeShowEvt) {
+   /* var timer = $('#ms_timer').text();
+    alert(timer);*/
   //  $('.km-content.km-widget.km-scroll-wrapper').css('background','#090E11');
     if(app.view().id === "views/login.html" || app.view().id === "views/registration.html") {
          beforeShowEvt.preventDefault();

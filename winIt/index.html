@@ -6,6 +6,7 @@
         <link href="styles/main.css" rel="stylesheet" />
         <link href="styles/kendo.common.min.css" rel="stylesheet" />
         <link href="styles/kendo.default.min.css" rel="stylesheet" />
+        <link href="styles/login.css" rel="stylesheet" />
       <!--  <link href="styles/kendo-ui-theme.css" rel="stylesheet" />-->
         <script src="cordova.js"></script>
         <script src="kendo/js/jquery.min.js"></script>
@@ -13,7 +14,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/jquery.countdownTimer.js"></script> 
         <script src="scripts/everlive.all.js"></script>
-        <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+        <script src="scripts/login.js"></script>
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 </head>
    
 <body>
@@ -53,9 +55,13 @@
         <a href="views/settings.html"><img src="images/settings.png" class="drawer_icons">Settings</a>
       </li>
       <li>
-        <a href="#" onclick="logout()"><img src="images/logout.png" class="drawer_icons">Logout</a>
+        <a onclick="logout()"><img src="images/logout.png" class="drawer_icons">Logout</a>
+      </li>
+      <li>
+        <a href="views/registration.html">Registration</a>
       </li>
     </ul>
   </div> 
+    
 </body>
 </html>

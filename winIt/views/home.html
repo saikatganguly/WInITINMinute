@@ -11,9 +11,23 @@
      
         </div>
      <div class="start_btnDiv">
-          <a id="start_btn" href="views/quiz.html" data-role="button" onclick="restart()"></a>
+          <a id="start_btn" data-role="button"  data-click="startQuiz"></a>
      </div>
-    <link href="../styles/quiz_info.css" rel="stylesheet" />
+    <link href="styles/quiz_info.css" rel="stylesheet" />
 </div>
-
-  
+<script>
+    
+function startQuiz(){
+    //alert("startQuiz");
+    if(isQuizVisited == false){
+     //   alert(isQuizVisited);
+         app.navigate("views/quiz.html","slide"); 
+    }
+    else{
+       //  alert(isQuizVisited);
+        app.navigate("views/quiz.html","slide"); 
+        clearInterval(interval);
+        initQuiz();
+    }
+}
+</script>
