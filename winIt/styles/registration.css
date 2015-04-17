@@ -40,7 +40,7 @@
     width: 69%;
     height: 40px; 
 }
-.button{
+.registration_button{
     width: 69%;
     height: 40px;
 }
@@ -62,12 +62,12 @@
     margin-left:-15px;
 }
 
-.option {
+.registration_option {
     float: left;
     width: 98%;
     height: 54px;
 }
-.feild {
+.registration_feild {
     width: 68%;
     background: url('../images/login_line.png') no-repeat 0 100%;
     background-size: 100%;
@@ -89,7 +89,7 @@
     width: 98%;
     margin-top:-3%;
 }
-.textbox{
+.registration_textbox{
     padding-left: 5px;
     width: 82%;
     overflow: hidden;
@@ -106,7 +106,7 @@
 {
     float: left;
 }
-.error {
+.registration_error {
   float: left;
   width: 100%;
   text-align: center;
