@@ -96,3 +96,21 @@
   color: red;
   height: 14px;
 }
+
+#fb_btn{
+   background: url('../images/fb.png') no-repeat; 
+   background-size: 65% 65%;
+    width: 71px;
+    height:  71px; 
+    border:none;
+    padding-left:3px;
+    margin-left:25px;
+}
+#twitter_btn{
+   background: url('../images/twitter.png') no-repeat; 
+   background-size: 65% 65%;
+    width: 71px;
+    height:  71px; 
+    border:none;
+    margin-left:-15px;
+}
