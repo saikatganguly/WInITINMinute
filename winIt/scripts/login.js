@@ -68,3 +68,27 @@ function isLoggedIn(){
             app.navigate("views/login.html","slide");
        });
 }
+
+function faceBookLogin(){
+    
+    facebookConnectPlugin.login(["email", "user_friends"], function(response) { 
+                if (response) {
+                    // contains the 'status' - bool, 'authResponse' - object with 'session_key', 'accessToken', 'expiresIn', 'userID'
+                    alert("You are: " + response.authResponse.accessToken);
+                    var accessToken = response.authResponse.accessToken;
+                    everlive.Users.loginWithFacebook(accessToken,
+                        function (data) {
+                            alert(JSON.stringify(data));
+                            var accessToken = data.result.access_token;
+                            alert("Successfully logged the user in! Received access token: " + accessToken);
+                            localStorage.setItem('access-token', accessToken);
+                            app.navigate("views/home.html","slide");
+                        },
+                        function(error){
+                            alert(JSON.stringify(error));
+                        });
+                } else {
+                    alert("You are not logged in");
+                }
+            });
+}
