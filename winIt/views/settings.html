@@ -1,33 +1,3 @@
-<div id="settings" data-role="view" data-title="Settings" data-layout="main" data-model="APP.models.settings">
+<div id="settings" data-role="view" data-title="Settings" data-layout="main" data-model="APP.models.settings"  data-before-show="stopTimer">
   <h1 data-bind="html: title"></h1>
-   
-   
-    <div id="confirmExitWindow" style="display: none;">
-            <p>Would You Like to Exit?</p>
-            <button class="k-button" id="yesButton">Yes</button>
-            <button class="k-button" id="noButton"> No</button>
-    </div>
-     <a data-role="button" id="openButton" onclick="confirmExitQuiz()">Open Window</a>
 </div>
-
-<script>
-
-    /*function confirmExitQuiz(){
-         var win = $("#confirmExitWindow");
-                alert(win.html());
-          win.kendoWindow({
-            height: "200px",
-            title: "Centered Window",
-            visible: false,
-            width: "200px"
-        }).data("kendoWindow");
-        win.data("kendoWindow");
-        win.center();
-        win.open();
-    }*/
-/*function confirmExitQuiz(){
-   $('#window').kendoWindow({
-  iframe: true
-});
-}*/
- </script>

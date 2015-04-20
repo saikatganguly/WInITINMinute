@@ -2,14 +2,16 @@
 <html>
 <head>
     <title></title>
-    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <link href="styles/main.css" rel="stylesheet" />
+        <link href="kendo/styles/jquery-ui.min.css" rel="stylesheet" />
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/kendo.common.min.css" rel="stylesheet" />
         <link href="styles/kendo.default.min.css" rel="stylesheet" />
+        <link href="styles/main.css" rel="stylesheet" />
         <link href="styles/login.css" rel="stylesheet" />
-      <!--  <link href="styles/kendo-ui-theme.css" rel="stylesheet" />-->
         <script src="cordova.js"></script>
         <script src="kendo/js/jquery.min.js"></script>
+         <script src="kendo/js/jquery-ui.min.js"></script>
+         <script src="kendo/js/kendo.all.min.js"></script>
         <script src="kendo/js/kendo.mobile.min.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/jquery.countdownTimer.js"></script> 
@@ -63,35 +65,10 @@
       </li>
     </ul>
   </div> 
-   <script>
-
-    function confirmExitQuiz(){
-         var win = $("#confirmExitWindow");
-                alert(win.html());
-          var kendoWindow =  $("#confirmExitWindow").kendoWindow({
-            height: "200px",
-            title: "Centered Window",
-            visible: false,
-            width: "200px"
-        });
-        kendoWindow.data("kendoWindow");
-        kendoWindow.center();
-        kendoWindow.open();
-    }
- </script>
-   <!-- <script>
-      $("<div\>").kendoWindow({
-        title: "Confirm Exit",
-        modal: true,
-        width: 200,
-        height: 100
-      }).data("kendoWindow").center();
-
-    </script> 
-    <div>
-             <p>Would You Like to Exit?</p>
-        <button class="k-button" id="yesButton">Yes</button>
-        <button class="k-button" id="noButton"> No</button>
-    </div>-->
+    <div id="confirmExitWindow" style="display:none;">
+            <p>Would You Like to Exit?</p>
+            <button class="k-button windowBtn" id="yesButton" onclick="confirm()">Yes</button>
+            <button class="k-button windowBtn" id="noButton" onclick="cancelled(app.view().id)"> No</button>
+    </div>
 </body>
 </html>
