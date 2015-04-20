@@ -29,7 +29,7 @@
     </div>
          
     <!-- application views will be rendered here -->
-    
+     
   </div>
 
   <!-- application drawer and contents -->
@@ -63,6 +63,22 @@
       </li>
     </ul>
   </div> 
+   <script>
+
+    function confirmExitQuiz(){
+         var win = $("#confirmExitWindow");
+                alert(win.html());
+          var kendoWindow =  $("#confirmExitWindow").kendoWindow({
+            height: "200px",
+            title: "Centered Window",
+            visible: false,
+            width: "200px"
+        });
+        kendoWindow.data("kendoWindow");
+        kendoWindow.center();
+        kendoWindow.open();
+    }
+ </script>
    <!-- <script>
       $("<div\>").kendoWindow({
         title: "Confirm Exit",
