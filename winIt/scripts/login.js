@@ -92,3 +92,101 @@ function faceBookLogin(){
                 }
             });
 }
+
+/********************* Twitter login*********************************/
+
+var options = {
+	consumerKey: 'fcOV9LQh18Nmvhy4HS8JWAVxq', // YOUR Twitter CONSUMER_KEY
+	consumerSecret: 'jYNX90Ccm83KgfIKa9WdJbtmoumtdUsLlT7IFJtl4LkKJoYAAR', // YOUR Twitter CONSUMER_SECRET
+	callbackUrl: window.location.host + window.location.pathname
+};
+var twitterKey = "twtrKey";
+/*
+document.addEventListener('deviceready', function () {  
+    var btnLogin = document.getElementById("cmdLogin");
+	btnLogin.addEventListener("click", logInTwitter, false);
+	app = new kendo.mobile.Application(document.body, {skin: 'flat'});
+}, false);
+*/
+//follow the Sign In Workflow https://dev.twitter.com/web/sign-in/implementing
+function logInTwitter() {
+	var oauth = OAuth(options);
+	var requestParams; 
+	var appBrowser;
+	//Step 1: Obtaining a request token
+	oauth.get('https://api.twitter.com/oauth/request_token', 
+			  function(data) {
+				  requestParams = data.text;
+				  //Step 2: Redirecting the user to authenticate using the received request token
+				  appBrowser = window.open('https://api.twitter.com/oauth/authenticate?' + data.text, "_blank"); // This opens the Twitter authentication / sign in page
+				  appBrowser.addEventListener('loadstart', function(event) {
+                      console.log("Check location " + event+event.url);   
+					  authorized(appBrowser, oauth, event.url, requestParams);
+				  });
+			  }, onError
+		);
+}
+
+function authorized(appBrowser, oauth, loc, requestParams){
+	
+	if (loc.indexOf(options.callbackUrl) >= 0) {
+		console.log("Check location " + loc);   
+		// Parse the returned URL
+		var index, verifier = '';
+		var params = loc.substr(loc.indexOf('?') + 1);
+                                 
+		params = params.split('&');
+		for (var i = 0; i < params.length; i++) {
+			var y = params[i].split('=');
+			if (y[0] === 'oauth_verifier') {
+				verifier = y[1];
+			}
+		}
+		//Step 3: Converting the request token to an access token
+		oauth.get('https://api.twitter.com/oauth/access_token?oauth_verifier=' + verifier + '&' + requestParams,
+				  function(data) {
+					  var accessParams = {};
+					  var qvars_tmp = data.text.split('&');
+					  for (var i = 0; i < qvars_tmp.length; i++) {
+						  var y = qvars_tmp[i].split('=');
+						  accessParams[y[0]] = decodeURIComponent(y[1]);
+					  }         
+					  oauth.setAccessToken([accessParams.oauth_token, accessParams.oauth_token_secret]);
+                                           
+					  // Saving token of access in Local_Storage
+					  var accessData = {};
+					  accessData.accessTokenKey = accessParams.oauth_token;
+					  accessData.accessTokenSecret = accessParams.oauth_token_secret;
+					  console.log(accessData.accessTokenSecret+"TWITTER: Storing token key/secret in localStorage"+accessData.accessTokenKey);
+					  localStorage.setItem(twitterKey, JSON.stringify(accessData));
+					  //Determine the identity of the user by verifying their credentials
+					  oauth.get('https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true', credentialsVerified, onError);
+				  },
+				  onError
+			);
+		appBrowser.close();
+	} 
+}
+
+function credentialsVerified(data) { 
+	var entry = JSON.parse(data.text);
+	console.log(JSON.stringify(entry));
+	screeenName = entry.screen_name;
+	var accessData=JSON.parse(localStorage.getItem(twitterKey));
+    console.log(accessData.accessTokenKey+"TWITTER USER: " + entry.screen_name);
+    everlive.Users.loginWithTwitter(accessData.accessTokenKey, accessData.accessTokenSecret,
+    function (data) {
+        alert("success"+JSON.stringify(data));
+        var accessToken = data.result.access_token;
+        alert("Successfully logged the user in! Received access token: " + accessToken);
+        localStorage.setItem('access-token', accessToken);
+        app.navigate("views/home.html","slide");
+    },
+    function(error){
+        alert("error"+JSON.stringify(error));
+    });
+}
+
+function onError(error) {
+	console.log("ERROR: " +JSON.stringify( error));
+}
