@@ -1,4 +1,7 @@
 var isQuizVisited = false; 
+var exitWindow;
+var min;
+var sec;
 var app;
 (function () {
     // store a reference to the application object that will be created
@@ -57,18 +60,18 @@ var app;
     
 }());
 
-function startTimer(){
+function startTimer(min,sec){
         $('#ms_timer').countdowntimer({
-         minutes :1,
-         seconds :0,
+         minutes :min,
+         seconds :sec,
          size : "lg",
          timeSeparator : ".",
          timeUp : timeisUp
          });
 }
-function timeisUp() {
+/*function timeisUp() {
   app.navigate("views/scoreCard.html","slide"); 
-}
+}*/
 function beforeShow(beforeShowEvt) {
    /* var timer = $('#ms_timer').text();
     alert(timer);*/
@@ -86,18 +89,54 @@ function onBackButton() {
     var item = app.view().id;
    
         switch (item) {
+                case "views/login.html":{
+                     navigator.app.exitApp();
+                     break;
+                 }
+                 case "views/registration.html":{
+                     navigator.app.exitApp();
+                     break;
+                 }
                  case "views/home.html":{
                      navigator.app.exitApp();
                      break;
                  }
                  case "views/quiz.html":{
-                    confirmExitQuiz();
+                     stopTimer();
+                    confirmExit();
                      break;
                 }
                  case "views/scoreCard.html":{
                     app.navigate("views/home.html","slide"); 
                     break;
                 }
+                case "views/settings.html":{
+                    confirmExit();
+                    break;
+                }
        }
 
+}
+function confirmExit(){
+     exitWindow = $("#confirmExitWindow").kendoWindow({
+            height: "100px",
+            title: "Confirm Exit",
+            visible: false,
+            width: "250px"
+        }).data("kendoWindow").center().open();
+}
+function confirm(){
+     exitWindow.close();
+     app.navigate("views/home.html","slide"); 
+}
+function cancelled(viewId){
+    
+    if(viewId == "views/quiz.html"){
+        var value = $("#ms_timer").html();
+        min = value.substring(0,2);
+         sec = value.substring(3,5);
+            startTimer(min,sec);
+    }
+    
+     exitWindow.close();
 }
