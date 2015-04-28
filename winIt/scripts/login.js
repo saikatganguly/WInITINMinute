@@ -101,14 +101,6 @@ var options = {
 	callbackUrl: window.location.host + window.location.pathname
 };
 var twitterKey = "twtrKey";
-/*
-document.addEventListener('deviceready', function () {  
-    var btnLogin = document.getElementById("cmdLogin");
-	btnLogin.addEventListener("click", logInTwitter, false);
-	app = new kendo.mobile.Application(document.body, {skin: 'flat'});
-}, false);
-*/
-//follow the Sign In Workflow https://dev.twitter.com/web/sign-in/implementing
 function logInTwitter() {
 	var oauth = OAuth(options);
 	var requestParams; 
@@ -190,3 +182,74 @@ function credentialsVerified(data) {
 function onError(error) {
 	console.log("ERROR: " +JSON.stringify( error));
 }
+/**************************google login********************/
+var googleapi = {
+    authorize: function(options,appBrowser) {
+        var deferred = $.Deferred();
+        var authUrl = 'https://accounts.google.com/o/oauth2/auth?' + $.param({
+            client_id: options.client_id,
+            redirect_uri: options.redirect_uri,
+            response_type: 'code',
+            scope: options.scope
+        });
+
+        appBrowser = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+        $(appBrowser).on('loadstart', function(e) {
+            var url = e.originalEvent.url;
+            var code = /\?code=(.+)$/.exec(url);
+            var error = /\?error=(.+)$/.exec(url);
+
+            if (code || error) {
+                //Always close the browser when match is found
+                appBrowser.close();
+            }
+
+            if (code) {
+                //Exchange the authorization code for an access token
+                $.post('https://accounts.google.com/o/oauth2/token', {
+                    code: code[1],
+                    client_id: options.client_id,
+                    client_secret: options.client_secret,
+                    redirect_uri: options.redirect_uri,
+                    grant_type: 'authorization_code'
+                }).done(function(data) {
+                    deferred.resolve(data);
+                }).fail(function(response) {
+                    deferred.reject(response.responseJSON);
+                });
+            } else if (error) {
+                //The user denied access to the app
+                deferred.reject({
+                    error: error[1]
+                });
+            }
+        });
+
+        return deferred.promise();
+    }
+};
+
+function logInGoogle() {
+    var appBrowser;
+    googleapi.authorize({
+        client_id: '400469019178-s6ess817q9lb22l5jmrf9o8bjqr9vmol.apps.googleusercontent.com',
+        client_secret: '2unax4_pBRkw6GdzauRDB-M4',
+        redirect_uri: 'http://localhost',
+        scope: 'https://www.googleapis.com/auth/plus.me'
+    },appBrowser).done(function(data) {
+        console.log(JSON.stringify(data));
+        everlive.Users.loginWithGoogle(data.access_token,
+            function (data) {
+                alert(JSON.stringify(data));
+                var accessToken = data.result.access_token;
+                alert("Successfully logged the user in! Received access token: " + accessToken);
+                app.navigate("views/home.html","slide");
+            },
+            function(error){
+                alert("everlive"+JSON.stringify(error));
+            });
+    }).fail(function(data) {
+        alert("err"+JSON.stringify(data));
+    });
+}
+/*********************************Microsoft Login************************************/
