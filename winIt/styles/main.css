@@ -74,3 +74,6 @@
 .windowBtn{
     width: 20%;
 }
+.km-flat .km-button{
+    border-radius: 0px;
+}
