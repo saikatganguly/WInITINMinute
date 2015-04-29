@@ -58,26 +58,18 @@
      width: 99%;
      height: 40px;
 }
-input[type="radio"]{
-    background: url('../images/unchecked.png') no-repeat;
-}
-.yahoo-img {
+/*.yahoo-img {
     background: url('../images/yahoo.png') no-repeat;
     width: 94%;
     height: 50px;
     float: left;
     margin: 3%;
     background-size: 100% 100%;
-}
+}*/
  .km-widget .km-listview-label {
     font-size: 13px;
     color: #696A6C;
 }
-.km-on-blackberry.km-blackberry6 .km-view .km-icon, 
-.km-on-blackberry.km-blackberry7 .km-view .km-icon, 
-.km-on-blackberry.km-ios .km-view .km-icon, 
-.km-pane.km-on-android .km-view .km-icon, 
-.km-pane.km-on-meego .km-view .km-icon,
 .km-flat .km-listview-label input[type=radio]{
     background: url('../images/unchecked.png') no-repeat;
     background-size: 100% 100%;

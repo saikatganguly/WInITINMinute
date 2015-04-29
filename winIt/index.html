@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-        <link href="kendo/styles/jquery-ui.min.css" rel="stylesheet" />
+        <!--<link href="kendo/styles/jquery-ui.min.css" rel="stylesheet" />-->
         <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/kendo.common.min.css" rel="stylesheet" />
         <link href="styles/kendo.default.min.css" rel="stylesheet" />
@@ -10,7 +10,7 @@
         <link href="styles/login.css" rel="stylesheet" />
         <script src="cordova.js"></script>
         <script src="kendo/js/jquery.min.js"></script>
-         <script src="kendo/js/jquery-ui.min.js"></script>
+        <!-- <script src="kendo/js/jquery-ui.min.js"></script>-->
          <script src="kendo/js/kendo.all.min.js"></script>
         <script src="kendo/js/kendo.mobile.min.js"></script>
         <script src="scripts/app.js"></script>
@@ -18,7 +18,7 @@
         <script src="scripts/everlive.all.js"></script>
         <script src="scripts/jsOAuth-1.3.6.min.js"></script>
         <script src="scripts/login.js"></script>
-    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+        <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 
 </head>
    
@@ -64,11 +64,14 @@
       <li>
         <a href="views/registration.html">Registration</a>
       </li>
+        <li>
+        <a href="views/test.html">Test</a>
+      </li>
     </ul>
   </div> 
     <div id="confirmExitWindow" style="display:none;">
             <p>Would You Like to Exit?</p>
-            <button class="k-button windowBtn" id="yesButton" onclick="confirm()">Yes</button>
+            <button class="k-button windowBtn" id="yesButton" onclick="confirm(app.view().id)">Yes</button>
             <button class="k-button windowBtn" id="noButton" onclick="cancelled(app.view().id)"> No</button>
     </div>
 </body>

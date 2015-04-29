@@ -10,45 +10,36 @@ var user= {
 var minutes=1;
 var seconds=0;
 function initQuiz(){
-    data.questions=
-        [
-        {
-            question: "what is Java?",
-            options: ["Computer Language","OS","Hardware","ETC"],
-            answer: "Computer Language"
+    $.ajax({
+        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/getQuestionsService",
+        type: "GET",
+        datatype: "json",
+        headers: {
+            "Authorization" : localStorage.getItem('access-token'),
         },
-        {
-            question: "what is India?",
-            options: ["Computer Language","OS","country","ETC"],
-            answer: "country"
+        contentType: "application/json",
+        accept: "application/json",
+        success: function(result){
+            data.questions = result;
+             if(user.questionIndex<=4){
+                changeQuection(user.questionIndex);
+             }
+             $('#ms_timer').countdowntimer({
+                  minutes :minutes,
+                  seconds :seconds,
+                  size : "lg",
+                  timeSeparator : ".",
+                  timeUp : timeisUp
+            });
+            isQuizVisited = true;
+             addAdsBannerAtBottom();
         },
-        {
-            question: "what is cricket?",
-            options: ["Computer Language","OS","Hardware","outdore Game"],
-            answer: "outdore Game"
-        },
-        {
-            question: "what is cow?",
-            options: ["Animal","aeroplane","neavy","things"],
-            answer: "Animal"
-        },
-        {
-            question: "what is asia?",
-            options: ["continent","aeroplane","neavy","things"],
-            answer: "continent"
-        }, 
-        ];
-     if(user.questionIndex<=4){
-        changeQuection(user.questionIndex);
-     }
-     $('#ms_timer').countdowntimer({
-          minutes :minutes,
-          seconds :seconds,
-          size : "lg",
-          timeSeparator : ".",
-          timeUp : timeisUp
+        error: function(error){
+            alert(JSON.stringify(error));
+        }
     });
-    isQuizVisited = true;
+   // alert(app.view().id);
+      
 }
 function restart(){
     console.log("restart**************");
@@ -75,13 +66,13 @@ function next(){
 }
 function activitiesChanged(id){
       var answerId = null;
-     selected = $("#"+id).val();
+     selected = $("#"+id).val().trim();
         var tabId = id.split("_").pop();
      if(previousId!==null){
          previousId.css('background','#E0DEDF');
      }
   
-     if(data.questions[user.questionIndex].answer === selected) {
+     if(data.questions[user.questionIndex].answer.trim() === selected) {
          user.score++;
          $('#optionList_'+tabId).css('background','#E0DEDF');
          $('#answerId').css('background','#E0DEDF');
@@ -92,7 +83,7 @@ function activitiesChanged(id){
     else{
        previousId = $('#optionList_'+tabId).css('background','#E55849');
         for(var i=0; i<=3; i++){
-            if(data.questions[user.questionIndex].options[i] === data.questions[user.questionIndex].answer){
+            if(data.questions[user.questionIndex].options[i].trim() === data.questions[user.questionIndex].answer.trim()){
                  'optionList_'+tabId;
                 $('#optionList_'+i).css('background','#37DD52');
                 answerId = 'optionList_'+i;
@@ -126,14 +117,14 @@ function displayStatus(){
 function redirectToScoreBoard(){
     console.log("redirectToScoreBoard**************");
     app.navigate("views/scoreCard.html","slide");
+    hideBanner();
 }
 function changeQuection(index){
-        //alert("question index"+index);
-        //alert("score is"+user.score);
+        //alert("question index "+index);
+    //    alert("question "+JSON.stringify(data.questions));
         questionTemplate = kendo.template($("#temp").html(), {useWithBlock:true});
         $("#results").html(questionTemplate(data.questions[index]));  
 }
-initQuiz();
 function addRightItem(){   
     //restart();
     if(app.view().id === "views/quiz.html"){
@@ -145,37 +136,77 @@ function addRightItem(){
         $("#navbar #right_item").text("");
     }
 }
-/*$("#openButton").click(function(){
-      $("#confirm").kendoWindow({
-        title: "Confirm Exit",
-        modal: true,
-        width: 200,
-        height: 100
-      }).data("kendoWindow").center();*/
-    /*var window = $("#confirm").kendoWindow({
-            title: "Confirm Exit",
-            resizable: false,
-            modal: true
-        });
+
+function addAdsBannerAtBottom(){
     
-     window.data("kendoWindow")
-        .content($("#confirmTemplate").html())
-        .center().open();
-});
-/*function confirmExitQuiz(){
-      $("#confirm").kendoWindow({
-        title: "Confirm Exit",
-        modal: true,
-        width: 200,
-        height: 100
-      }).data("kendoWindow").center();*/
-    /*var window = $("#confirm").kendoWindow({
-            title: "Confirm Exit",
-            resizable: false,
-            modal: true
-        });
+     var ad_units = {
+          ios : {
+            banner: 'ca-app-pub-7748174862052689/8033820856',
+          },
+          android : {
+            banner: 'ca-app-pub-7748174862052689/6975890055',
+          },
+          wp8 : {
+            banner: 'ca-app-pub-7748174862052689/1987287250',
+          }
+    };
+
+    var adMobKeys;
+    if (/(android)/i.test(navigator.userAgent)) {
+      adMobKeys = ad_units.android;
+    } else if (/(iphone|ipad)/i.test(navigator.userAgent)) {
+      adMobKeys = ad_units.ios;
+    } else {
+      adMobKeys = ad_units.wp8;
+    }
     
-     window.data("kendoWindow")
-        .content($("#confirmTemplate").html())
-        .center().open();*/
-//}
+    if (!checkSimulator()) {
+       
+         window.plugins.AdMob.createBannerView(
+                // createBannerView params
+                {
+                  'publisherId': adMobKeys.banner,
+                  'adSize': window.plugins.AdMob.AD_SIZE.SMART_BANNER,
+                  'bannerAtTop':false,
+                  'overlap': false, // true doesn't push the webcontent away
+                  'offsetTopBar': true // set to true if you want it below the iOS >= 7 statusbar
+                },
+                // createBannerView success callback
+                function() {
+                  window.plugins.AdMob.requestAd(
+                      // requestAd params
+                      {
+                        'isTesting': false
+                      },
+                      // requestAd success callback
+                      function(){
+                        window.plugins.AdMob.showAd(
+                            // showAd params
+                            true,
+                            // showAd success callback
+                            function() {console.log('show ok')},
+                            // showAd error callback
+                            function() { alert('failed to show ad')});
+                      },
+                      // requestAd error callback
+                      function(){ alert('failed to request ad'); }
+                  );
+                },
+                // createBannerView error callback
+                function(){ alert('failed to create banner view'); }
+		      );
+    }
+
+}
+function checkSimulator() {
+       if (window.navigator.simulator === true) {
+            alert('This plugin is not available in the simulator.');
+            return true;
+       } else if (window.plugins === undefined || window.plugins.AdMob === undefined) {
+            alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
+            return true;
+       } else {
+            return false;
+       }
+}   
+initQuiz();

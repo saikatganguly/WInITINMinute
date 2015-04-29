@@ -76,15 +76,23 @@ function beforeShow(beforeShowEvt) {
    /* var timer = $('#ms_timer').text();
     alert(timer);*/
   //  $('.km-content.km-widget.km-scroll-wrapper').css('background','#090E11');
-    if(app.view().id === "views/login.html" || app.view().id === "views/registration.html") {
+    if(app.view().id === "views/splash.html" || app.view().id === "views/login.html" || app.view().id === "views/registration.html") {
          beforeShowEvt.preventDefault();
     }
 }
 function stopTimer() {
-     if(isQuizVisited == true){
+     if(isQuizVisited === true){
           clearInterval(window['timer_MS' + 'ms_timer']);
+         if(!(app.view().id === "views/quiz.html"))
+             hideBanner();
      }
  }
+  
+function hideBanner() {
+      if (!this.checkSimulator()) {
+	       window.plugins.AdMob.destroyBannerView();
+     }
+}
 function onBackButton() {
     var item = app.view().id;
    
@@ -125,13 +133,15 @@ function confirmExit(){
             width: "250px"
         }).data("kendoWindow").center().open();
 }
-function confirm(){
+function confirm(viewId){
      exitWindow.close();
      app.navigate("views/home.html","slide"); 
+    if(viewId === "views/quiz.html")
+        hideBanner();
 }
 function cancelled(viewId){
     
-    if(viewId == "views/quiz.html"){
+    if(viewId === "views/quiz.html"){
         var value = $("#ms_timer").html();
         min = value.substring(0,2);
          sec = value.substring(3,5);
