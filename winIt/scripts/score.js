@@ -1,6 +1,6 @@
 
 var everlive = new Everlive({
-    apiKey: "KGCVGkuoa3Zw0Auj",
+    apiKey: "elKw1nKoaJB4RIJ8",
     scheme: "https"
 });
 
@@ -81,7 +81,7 @@ function createHello(){
 function test(){
     var data={};
     $.ajax({
-        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/get_questionservice",
+        url: "https://platform.telerik.com/bs-api/v1/elKw1nKoaJB4RIJ8/Functions/get_questionservice",
         type: "GET",
         headers: {
             "Authorization" : localStorage.getItem('access-token'),
@@ -103,7 +103,7 @@ function test(){
 function getQestions(){
     var data={};
     $.ajax({
-    url: 'http://api.everlive.com/v1/KGCVGkuoa3Zw0Auj/questions',
+    url: 'http://api.everlive.com/v1/elKw1nKoaJB4RIJ8/questions',
     type: "GET",
     headers: {
         "Authorization" : localStorage.getItem('access-token')
@@ -118,7 +118,7 @@ function getQestions(){
     })
 }
 /*$.ajax({
-        url: 'https://api.everlive.com/v1/KGCVGkuoa3Zw0Auj/questions',
+        url: 'https://api.everlive.com/v1/elKw1nKoaJB4RIJ8/questions',
         type: "GET",
         headers: {
             "Authorization" : localStorage.getItem('access-token')
