@@ -81,17 +81,18 @@ function createHello(){
 function test(){
     var data={};
     $.ajax({
-        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/getQuestionService",
+        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/getQuestionsService",
         type: "GET",
         headers: {
             "Authorization" : localStorage.getItem('access-token'),
+          
         },
         contentType: "application/json",
         accept: "application/json",
         success: function(data){
             alert(JSON.stringify(data));
-            data.questions = JSON.stringify(data);
-            alert(data.questions);
+          /*  data.questions = JSON.stringify(data);
+            alert(data.questions);*/
         },
         error: function(error){
             alert(JSON.stringify(error));

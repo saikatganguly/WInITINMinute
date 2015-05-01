@@ -11,7 +11,7 @@ var minutes=1;
 var seconds=0;
 function initQuiz(){
     $.ajax({
-        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/getQuestionsService",
+        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/get_questionservice",
         type: "GET",
         datatype: "json",
         headers: {
