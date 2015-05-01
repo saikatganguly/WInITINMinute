@@ -81,7 +81,7 @@ function createHello(){
 function test(){
     var data={};
     $.ajax({
-        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/getQuestionsService",
+        url: "https://platform.telerik.com/bs-api/v1/KGCVGkuoa3Zw0Auj/Functions/get_questionservice",
         type: "GET",
         headers: {
             "Authorization" : localStorage.getItem('access-token'),
