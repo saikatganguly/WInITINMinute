@@ -29,7 +29,7 @@ function hide(){
 }
 function register(){
     var username = $("#email").val();
-var password = $("#password").val();
+var password = $("#pwd").val();
 var attrs = {
     Email: $("#email").val(),
     Name: $("#name").val(),
