@@ -243,6 +243,7 @@ function logInGoogle() {
                 alert(JSON.stringify(data));
                 var accessToken = data.result.access_token;
                 alert("Successfully logged the user in! Received access token: " + accessToken);
+                localStorage.setItem('access-token', accessToken);
                 app.navigate("views/home.html","slide");
             },
             function(error){
@@ -253,3 +254,68 @@ function logInGoogle() {
     });
 }
 /*********************************Microsoft Login************************************/
+var microsoftapi = {
+    authorize: function(options) {
+        var deferred = $.Deferred();
+
+        //Build the OAuth consent page URL
+        var authUrl = 'https://login.live.com/oauth20_authorize.srf?client_id='+ options.client_id+'&response_type=token&scope='+options.scope;
+        console.log(authUrl);
+
+        var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+
+       $(authWindow).on('loadstart', function(e) {
+            var url = e.originalEvent.url;
+            var code = /\#access_token=(.+)$/.exec(url);
+            var error = /\#error=(.+)$/.exec(url);
+            if (code || error) {
+                //Always close the browser when match is found
+                authWindow.close();
+            }
+            if (code) {
+                console.log(url)
+                var verifier = '';
+        		var params = url.substr(url.indexOf('#') + 1);
+                params = params.split('&');
+        		for (var i = 0; i < params.length; i++) {
+        			var y = params[i].split('=');
+        			if (y[0] === 'access_token') {
+        				verifier = y[1];
+        			}
+        		}
+                var data={access_token:verifier}
+                console.log(JSON.stringify(data))
+                deferred.resolve(data);
+            } else if (error) {
+                //The user denied access to the app
+                deferred.reject({
+                    error: error[1]
+                });
+            }
+        });
+
+        return deferred.promise();
+    }
+};
+function logInMicrosoft() {
+     microsoftapi.authorize({
+            client_id: '000000004414C775',
+            client_secret: 'TbuaTGfehBcy93bBI8AtOmp-N4xVTFYW',
+            scope: 'wl.signin'
+        }).done(function(data) {
+         console.log(JSON.stringify(data))
+        everlive.Users.loginWithLiveID(data.access_token,
+            function (data) {
+                alert(JSON.stringify(data));
+                var accessToken = data.result.access_token;
+                alert("Successfully logged the user in! Received access token: " + accessToken);
+                localStorage.setItem('access-token', accessToken);
+                app.navigate("views/home.html","slide");
+            },
+            function(error){
+                alert("everlive"+JSON.stringify(error));
+            });
+    }).fail(function(data) {
+        alert("err"+JSON.stringify(data));
+    });
+}
