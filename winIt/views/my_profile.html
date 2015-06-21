@@ -1,0 +1,51 @@
+<div id="my_profile" data-role="view" data-title="My Profile" data-layout="main" data-before-show="callBeforeLodingFunctions" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;">
+   
+    <div id="profile-content">
+         <a data-role="button" href="#options" data-rel="popover" id="popoverBtn" data-click="startCamera()">
+             <img id="profileImage" src=""/>
+         </a>
+         <div class="details-content">
+              <div class="details">
+                 <label>Display Name:</label>
+                 <!--div id="currentUserName">Name:</div>-->
+                 <input type="text" id="currentUserName" name="currentUserName" class="textbox k-space-right">
+                 <a data-role="button" data-icon="compose" id="nameEdit" data-click="editName"></a>
+              </div>
+              <div class="details">
+                 <label>Address:</label>
+                <!-- <div id="currentUserAdd">Address:</div>-->
+                  <input type="text" id="currentUserAdd" name="currentUserAdd" class="textbox  k-space-right">
+                  <a data-role="button" data-icon="compose" id="addressEdit" data-click="editAddress"></a>
+              </div>
+             <div class="subContent">
+                 <h3>Change Password</h3>
+                  <form action="#" id="changePwdForm" onsubmit="return false;">
+                     <div class="details">
+                         <label class="password-label">Old:</label>
+                         <input type="password" name="old-password"  id="old-password" class="textbox" placeholder="Old Password" required data-required-msg="Enter Old Password" onfocus="removePwdMessage('errOldPwd')"/>
+                         <!--<a href="#modalview-password" data-rel="modalview"  onclick="clearData()"></a>-->
+                     </div>
+                      <!--<span class="k-invalid-msg" data-for="old-password"></span>-->
+                     <div class="details">
+                         <label class="password-label">New:</label>
+                          <input type="password" name="new-password"  id="new-password" class="textbox" placeholder="New Password" required data-required-msg="Enter New Password" onfocus="removePwdMessage('errNewPwd')"/>
+                         <!--<a href="#modalview-password" data-rel="modalview"  onclick="clearData()"></a>-->
+                      </div>
+                      <!--<span class="k-invalid-msg" data-for="new-password"></span>-->
+                        <div id="errMsg" class="error"></div>
+                  </form>
+             </div>
+             <a data-role="button" id="updateUser" data-click="updateDetails"></a>
+         </div>
+         
+          <div id="options" data-role="popover">
+             <div data-role="view" data-title="Options">
+               <ul  data-role="listview">
+                <li><a id="capturePhotoButton">Take Photo</a></li>
+                <li><a id="getPhotoFromLibraryButton">Upload Photo</a></li>
+              </ul>
+             </div>
+          </div>
+    </div>
+</div>
+

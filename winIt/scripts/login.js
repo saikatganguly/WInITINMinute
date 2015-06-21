@@ -1,14 +1,44 @@
-var everlive = new Everlive({
-    apiKey: "elKw1nKoaJB4RIJ8",
-    scheme: "https",
-    token: localStorage.getItem('access-token')
+var everlive;
+var userId;
+$(document).ready(function(){
+    //alert(localStorage.getItem('access-token'));
+     everlive = new Everlive({
+        apiKey: "elKw1nKoaJB4RIJ8",
+        scheme: "https",
+        token: localStorage.getItem('access-token')
+    });
 });
+
 function changeUI(){
+   // alert("changeUI");
     if (kendo.support.mobileOS.android) {
-      //  $('#logo').css('height','150px');
-        $('.option').css('height','50px');
+       // $('.logo').css('height','165px');
+       // $('.option').css('height','50px');
         $('.login-icon').css('height','27px');
         $('.password-icon').css('height','31px');
+    }
+     if (kendo.support.mobileOS.wp) {
+        $('.textbox').css('font-size','25px');
+        $('.logo').css('height','165px');
+        $('.logo').css('margin','10% 0  0 36%');
+        $('.error').css('height','30px');
+        $('.loginContent').css('margin-top','3%');
+        $('.option').css('height','75px');
+        $('.feild').css('margin-left','16%');
+        $('.feild').css('height','50px');
+        $('#acceptButton').css('height','55px');
+        $('#acceptButton').css('margin-top','6%');
+        $('#signup_btn_for_login').css('height','55px');
+        $('#fb_btn').css('height','90px');
+        $('#fb_btn').css('width','20%');
+        $('#twitter_btn').css('height','90px');
+        $('#twitter_btn').css('width','20%');
+        $('#google_btn').css('height','90px');
+        $('#google_btn').css('width','20%');
+        $('#microsoft_btn').css('height','90px');
+        $('#microsoft_btn').css('width','20%');
+        $('#password').css('padding-top','10px');
+         
     }
 }
 function show(){
@@ -18,6 +48,10 @@ function hide(){
        $("#header").hide("fast");
 }
 function login(){
+    $('#acceptButton').fadeTo(100, 0.1).fadeTo(200, 1.0);
+   // alert(localStorage.getItem('access-token'));
+     //alert("inside login");
+     console.log("before login userId  "+userId);
     var validator = $("#loginForm").kendoValidator().data("kendoValidator");
               //  alert("Checking alert in login");
                 var username = $("#userName").val();
@@ -28,49 +62,76 @@ function login(){
                     var accessToken = data.result.access_token;
                //     alert("Successfully logged the user in! Received access token: " + accessToken);
                     localStorage.setItem('access-token', accessToken);
+                    localStorage.setItem('userId',data.result.principal_id);
+                         console.log("userId  "+userId);
+                    localStorage.setItem('userName' , username);
+                   // localStorage.setItem('displayName' , data.result.Name);
+                    getLocation();
                     app.navigate("views/home.html","slide"); 
+                      //   var accesstoken = localStorage.getItem('access-token');
+                     //   alert(accesstoken);
                   //  show();
                 }, function(err) {
                     console.log(err.message);
                      $("#errMsg").text("Invalid Username or Password!");
                      $("#userName").val("");
                      $("#password").val("");
-            });
+               });
          } 
 }
-function removeMessage(){
+function removeLoginMessage(){
     $("#errMsg").text("");
 }
 function logout(){
-            everlive.Users.logout(function() {
-         //   alert("Logout successful!");
-            localStorage.getItem('access-token');
-            app.navigate("views/login.html","slide");    
+   // alert("Logout!");
+         everlive.Users.logout(function() {
+           console.log("Logout successful!");
+           console.log("userId  "+userId);
+            localStorage.removeItem('access-token');
+            localStorage.removeItem('userId');
+             $("#appDrawer").data("kendoMobileDrawer").hide();   
+                setTimeout(function(){
+                     app.navigate("views/login.html","slide");  
+                },400);
+              $("#userName").val("");
+              $("#password").val("");
           //  hide();
         }, function(err) {
-           // alert("Failed to logout: " + err.message);
+           alert("Failed to logout: " + err.message);
         });
 }
 function isLoggedIn(){
+  if(homeImageId !== null){
+     // getHomeImage();
        everlive.Users.currentUser(function(data) {
+            //alert("currentUser");
             if (data.result) {
                 var username = data.result.Username;
                  app.navigate("views/home.html","slide");
-           //     alert(username + " is logged in!");
+                localStorage.setItem('userId',data.result.Id);
+                localStorage.setItem('userName' , username);
+                //localStorage.setItem('displayName' , data.result.Name);
+               /* userImageId = data.result.ProfileImage;
+                alert("isLoggedIn  userImageId****************"+userImageId);*/
+                getLocation();
+               //  getHomeImage();
+             //   alert(username + " is logged in!");
                 $("#userName").val("");
                 $("#password").val("");
             } else {
-             //   alert("Missing access token. Please login!");
+            //    alert("Missing access token. Please login!");
                   app.navigate("views/login.html","slide");
             }
        }, function(err) {
-          //  alert(err.message + " Please login.");
+         //   alert(err.message + " Please login.");
             app.navigate("views/login.html","slide");
        });
+    }
 }
 
 function faceBookLogin(){
-    
+  
+    $('#fb_btn').fadeTo(100, 0.1).fadeTo(200, 1.0);
     facebookConnectPlugin.login(["email", "user_friends"], function(response) { 
                 if (response) {
                     // contains the 'status' - bool, 'authResponse' - object with 'session_key', 'accessToken', 'expiresIn', 'userID'
@@ -82,6 +143,7 @@ function faceBookLogin(){
                             var accessToken = data.result.access_token;
                             alert("Successfully logged the user in! Received access token: " + accessToken);
                             localStorage.setItem('access-token', accessToken);
+                            loginFromSocial = true;
                             app.navigate("views/home.html","slide");
                         },
                         function(error){
@@ -91,6 +153,10 @@ function faceBookLogin(){
                     alert("You are not logged in");
                 }
             });
+}
+function sign_up(){
+    $('#signup_btn_for_login').fadeTo(100, 0.1).fadeTo(200, 1.0);
+    app.navigate('views/registration.html', 'slide');
 }
 
 /********************* Twitter login*********************************/
@@ -102,6 +168,7 @@ var options = {
 };
 var twitterKey = "twtrKey";
 function logInTwitter() {
+     $('#twitter_btn').fadeTo(100, 0.1).fadeTo(200, 1.0);
 	var oauth = OAuth(options);
 	var requestParams; 
 	var appBrowser;
@@ -114,6 +181,7 @@ function logInTwitter() {
 				  appBrowser.addEventListener('loadstart', function(event) {
                       console.log("Check location " + event+event.url);   
 					  authorized(appBrowser, oauth, event.url, requestParams);
+                    
 				  });
 			  }, onError
 		);
@@ -192,15 +260,17 @@ var googleapi = {
             response_type: 'code',
             scope: options.scope
         });
-
-        appBrowser = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+    
+       // appBrowser = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+       setTimeout(function(){
+           appBrowser = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+       },500);
         $(appBrowser).on('loadstart', function(e) {
             var url = e.originalEvent.url;
             var code = /\?code=(.+)$/.exec(url);
             var error = /\?error=(.+)$/.exec(url);
-
+            console.log(""+url);
             if (code || error) {
-                //Always close the browser when match is found
                 appBrowser.close();
             }
 
@@ -213,23 +283,27 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function(data) {
+                   // alert("successful login");
                     deferred.resolve(data);
                 }).fail(function(response) {
+                    //alert("failed login");
                     deferred.reject(response.responseJSON);
                 });
             } else if (error) {
                 //The user denied access to the app
+                 // alert("error to login");
                 deferred.reject({
                     error: error[1]
                 });
             }
         });
-
         return deferred.promise();
     }
 };
 
 function logInGoogle() {
+    alert("logInGoogle");
+    $('#google_btn').fadeTo(100, 0.1).fadeTo(200, 1.0);
     var appBrowser;
     googleapi.authorize({
         client_id: '400469019178-s6ess817q9lb22l5jmrf9o8bjqr9vmol.apps.googleusercontent.com',
@@ -237,9 +311,11 @@ function logInGoogle() {
         redirect_uri: 'http://localhost',
         scope: 'https://www.googleapis.com/auth/plus.me'
     },appBrowser).done(function(data) {
-        console.log(JSON.stringify(data));
+        alert(JSON.stringify(data));
+        // alert("in google api");
         everlive.Users.loginWithGoogle(data.access_token,
             function (data) {
+                //alert("login success");
                 alert(JSON.stringify(data));
                 var accessToken = data.result.access_token;
                 alert("Successfully logged the user in! Received access token: " + accessToken);
@@ -247,9 +323,11 @@ function logInGoogle() {
                 app.navigate("views/home.html","slide");
             },
             function(error){
+                // alert("login error");
                 alert("everlive"+JSON.stringify(error));
             });
     }).fail(function(data) {
+        // alert("login failed");
         alert("err"+JSON.stringify(data));
     });
 }
@@ -257,12 +335,15 @@ function logInGoogle() {
 var microsoftapi = {
     authorize: function(options) {
         var deferred = $.Deferred();
-
+        var authWindow; 
         //Build the OAuth consent page URL
         var authUrl = 'https://login.live.com/oauth20_authorize.srf?client_id='+ options.client_id+'&response_type=token&scope='+options.scope;
         console.log(authUrl);
-
-        var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+        setTimeout(function(){
+                  authWindow=window.open(authUrl, '_blank', 'location=no,toolbar=no');
+                },500);
+             
+        // window.open(authUrl, '_blank', 'location=no,toolbar=no');
 
        $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
@@ -298,6 +379,7 @@ var microsoftapi = {
     }
 };
 function logInMicrosoft() {
+     $('#microsoft_icon_height').fadeTo(150, 0.1).fadeTo(200, 1.0);
      microsoftapi.authorize({
             client_id: '000000004414C775',
             client_secret: 'TbuaTGfehBcy93bBI8AtOmp-N4xVTFYW',
@@ -308,7 +390,7 @@ function logInMicrosoft() {
             function (data) {
                 alert(JSON.stringify(data));
                 var accessToken = data.result.access_token;
-                alert("Successfully logged the user in! Received access token: " + accessToken);
+                //alert("Successfully logged the user in! Received access token: " + accessToken);
                 localStorage.setItem('access-token', accessToken);
                 app.navigate("views/home.html","slide");
             },

@@ -1,17 +1,12 @@
-<div data-role="view" id="showquizpage" data-title="WinItInMinute" data-layout="main">
-     <!--data-after-show="addRightItem"-->
+<div data-role="view" id="quiz" data-title="WinItInMinute" data-layout="main" data-before-show="changeBeforeQuizUI" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;">
+     <!--data-after-show="addRightItem" data-before-hide="beforeHide"-->
    <div class="timer-div">
        <span id="ms_timer" data-align="right"></span>
        seconds
     </div>
+    
     <div id="results"></div>
-    <!--<div  class="btnDiv">
-        <a id="nextBtn" class="button" onclick="next()" data-role="button"></a>
-    </div>-->
-  
-   <!-- <div data-role="footer">
-        <div class="yahoo-img"></div>
-    </div>-->
+ 
 <script type="text/x-kendo-template" id="temp">
     <div>
         <h3 class="question">#= question #</h3>
@@ -19,22 +14,20 @@
             # for(var i = 0, l = options.length; i < l; i++){#
             <li id="optionList_#:i#">
                 <label class="km-listview-label">
-                    <input class="" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#">
+                    <input class="" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#" data-rel="modalview">
                     #= options[i] #
                 </label>
             </li>
            #}#
         </ul>
+    
     </div>
 </script>
- <link href="styles/quiz.css" rel="stylesheet" />
-<script type="text/javascript"  src="scripts/showquiz.js"></script>
+  <div data-role="modalview" id="modalview" style="width: 90%;">
+         <h4 id="quizResult"></h4>
+         <h4>Score: <span id="user_score"></span></h4>
+      <!--	<h4>Score: <span id="user_total_score"></span></h4>-->
+         <div ><a data-role="button" data-click="ok" style="color: red;background:green;">ok</a></div>
+  </div>   
    
 </div>
-
-
-
-
- 
-
-

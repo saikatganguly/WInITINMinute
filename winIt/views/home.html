@@ -1,31 +1,15 @@
-<div data-role="view" data-title="Home" data-layout="main" data-before-show="stopTimer">
-    <div id="" class="quiz_info_logo"></div>
-    <div class="img-div">
-    </div>
+<div id="home" data-role="view" data-title="Home" data-layout="main" data-before-show="changeHomeUIBefore" data-after-show="changeHomeUI" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;" >
+     <div id="home_logo" class="quiz_info_logo"></div>
+    <img id="imgDiv" src="">
+   <!-- <div id="imgDiv" class="img-div"></div>-->
        <div class="span12">
-        <p class="padding-top">LMS provides an environment that is conducive to an employee’s professional and personal growth, in terms of respect for one another, teamwork, trust and integrity.</p>
-
-           <p>
-           Our work culture encourages open channels of communication, a flat hierarchy, informal environment, teamwork and respect to new ideas and thoughts.         
-        </p>
-     
-        </div>
+            <p style="font-family: Myriad Pro regular;">LMS provides an environment that is conducive to an employee’s professional and personal growth, in terms of respect for one another, teamwork, trust and integrity.</p>
+            <p style="font-family: Myriad Pro regular;">
+               Our work culture encourages open channels of communication, a flat hierarchy, informal environment, teamwork and respect to new ideas and thoughts.         
+            </p>
+       </div>
      <div class="start_btnDiv">
           <a id="start_btn" data-role="button"  data-click="startQuiz"></a>
      </div>
-    <link href="styles/quiz_info.css" rel="stylesheet" />
 </div>
-<script>
- 
-function startQuiz(){
-    if(isQuizVisited == false){
-         app.navigate("views/quiz.html","slide"); 
-    }
-    else{
-       // app.navigate("views/quiz.html","slide"); 
-       /* clearInterval(interval);
-        initQuiz();*/
-        restart();
-    }
-}
-</script>
+

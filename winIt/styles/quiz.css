@@ -29,13 +29,18 @@
    margin-top: 3%;
 }
 .question{
-    background: #F3F1F2;
     width: 96%;
     height: auto;
     float: left;
     font-weight: lighter;
     padding: 5%;
    /* padding: 10% 5% 10% 5%;*/
+    background-color: #B1CB36;
+    border-radius: 6px;
+    color: #fff;
+    font-family:  Myriad Pro regular;
+    font-size: 18px;
+    font-weight: lighter;
 }
 #option_ul>li{
     border-style: solid;
@@ -45,6 +50,8 @@
     background: #E0DEDF;
     width: 96%;
     margin-left: 2%;
+    font-size: 16px;
+    border-radius: 6px;
 }
 .btnDiv {
     float: left;
@@ -68,29 +75,76 @@
 }*/
  .km-widget .km-listview-label {
     font-size: 13px;
-    color: #696A6C;
+    color: #000000;
+    padding-left: 18px;
 }
-.km-flat .km-listview-label input[type=radio]{
+/*input[type="radio"]{
+    display:none;
+}*/
+/*input[type="radio"] + label{
     background: url('../images/unchecked.png') no-repeat;
     background-size: 100% 100%;
     width: 7%;
     height: 21px;
     cursor: pointer;
-}  
-.km-flat .km-listview-label input[type=radio]:checked{
-     background: url('../images/checked.png') no-repeat;
+    display:inline-block;
+}
+input[type="radio"]:checked + label{
+    background: url('../images/checked.png') no-repeat;
     background-size: 100% 100%;
     width: 7%;
     height: 21px;
-     cursor: pointer;
+    cursor: pointer;
+    display:inline-block;
+}*/
+.km-flat .km-listview-label input[type=radio]{
+display:inline-block;
+    background: url('../images/unchecked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
+}  
+.km-flat .km-listview-label input[type=radio]:checked{
+display:inline-block;
+    background: url('../images/checked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
 }
-.km-root .km-pane .km-view .km-icon{
+/*.km-flat .km-listview-label input[type='radio'][checked]{
+display:inline-block;
+    background: url('../images/checked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
+}*/
+/*.km-root .km-pane .km-view .km-icon{
     background-size:100% 100%;
-}
+}*/
 .km-root .km-pane .km-check:checked:after, .km-widget .km-check:checked:after{
-    content: "";
+    content: none;
 }
 .km-flat .km-listinset>li:first-child:last-child, 
 .km-flat .km-listgroupinset .km-list>li:first-child:last-child {
   background-color: #3C4043;
+}
+.km-list input[type=radio] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.km-wp .km-listview-label input[type=radio]{
+  border-color: #fff;
+  box-shadow: 0 0 0 #fff;
+  -webkit-box-shadow: 0 0 0 #fff;
+}
+::-ms-check{
+    width: 0%;
+    border: none;
 }

@@ -1,5 +1,13 @@
 {
+  "CordovaPluginVariables": {
+    "com.telerik.mobiletesting": {
+      "IOS_APP_URL": "winIt"
+    }
+  },
   "CorePlugins": [
+    "com.rjfun.cordova.plugin.admob@2.1.7",
+    "com.telerik.feedback",
+    "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
     "org.apache.cordova.camera",
     "org.apache.cordova.contacts",

@@ -9,9 +9,11 @@
 .logo{
     background: url('../images/logo.png') no-repeat;
     width: 40%;
-    height: 155px;
+   /* height: 155px;*/
+    height: 120px;
     float: left;
-    margin: 15% 0  0 36%;
+   /* margin: 15% 0  0 36%;*/
+    margin: 3% 0  0 36%;
     background-size: 70%;
 }
 .logo-android {
@@ -30,8 +32,14 @@
     text-align: center;
 }
 #acceptButton{
-     background: url('../images/loginbtn.png') no-repeat; 
+     background: url('../images/login.png') no-repeat; 
+ /*background-color: #3FCDD7;
+     color: white;
+    text-align:center;*/
      background-size: 100% 100%;
+    /*font-family:calibri, serif;*/
+    font-size:15px;
+     margin-top: 3%;
 }
 .button{
     width: 69%;
@@ -44,7 +52,7 @@
 .option {
     float: left;
     width: 98%;
-    height: 54px;
+    height: 55px;
 }
 .feild {
     width: 68%;
@@ -58,31 +66,49 @@
     float: left;
     width: 12%;
     height: 29px;
-    background: url('../images/login.jpg') no-repeat;
+    background: url('../images/loginicon.png') no-repeat;
     background-size: 100%;
-      margin-left: 3%;
+    margin-left: 3%;
     margin-top: 2%;
 }
 .password-icon {
     float: left;
     width: 11%;
     height: 36px;
-    background: url('../images/password.jpg') no-repeat;
+    background: url('../images/passicon.png') no-repeat;
     background-size: 93%;
     margin-left: 3%;
 }
-.btnDiv {
+/*.login-icon-wp{
+    float: left;
+    width: 12%;
+    height: 29px;
+    background-image: url('../images/login.jpg');
+    background-size: 100%;
+    margin-left: 3%;
+    margin-top: 2%;
+}
+.password-icon-wp {
+    float: left;
+    width: 11%;
+    height: 36px;
+    background-image: url('../images/password.jpg');
+    background-size: 93%;
+    margin-left: 3%;
+}*/
+.login_btnDiv {
     float: left;
     width: 98%;
+    margin-top:4%;
 }
 .textbox{
     padding-left: 5px;
     width: 82%;
     overflow: hidden;
     border: 0;
-    font-size: 17px;
-    color: #6C7379;
-   /* background-color: #3C4043;*/
+    font-size: 16px;
+   /* color: #F49829;*/
+    background-color: #3C4043;
     padding-top: 5px;
 }
 .custom-icon
@@ -96,21 +122,73 @@
   color: red;
   height: 14px;
 }
-
+#social{
+    margin-top: 0px;
+    margin-left: 0px;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
 #fb_btn{
    background: url('../images/fb.png') no-repeat; 
    background-size: 65% 65%;
-    width: 71px;
-    height:  71px; 
-    border:none;
-    padding-left:3px;
-    margin-left:25px;
+   width: 71px;
+   height:  71px; 
+   border:none;
+   padding-left:3px;
+   margin-left:25px;
 }
 #twitter_btn{
    background: url('../images/twitter.png') no-repeat; 
    background-size: 65% 65%;
+   width: 71px;
+   height:  71px; 
+   border:none;
+   margin-left:-15px;
+}
+#google_btn{
+   background: url('../images/google.png') no-repeat; 
+   background-size: 65% 65%;
+   width: 71px;
+   height:  71px; 
+   border:none;
+   margin-left:-15px;
+}
+#microsoft_btn{
+    background: url('../images/microsoft.png') no-repeat; 
+    background-size: 65% 65%;
     width: 71px;
     height:  71px; 
     border:none;
     margin-left:-15px;
+}
+#signup_btn_for_login{
+   background: url('../images/signup.png') no-repeat; 
+    background-size: 100% 100%; 
+    /*background-color: #B1CB36;
+     color: white;
+    text-align:center;*/
+    
+    width: 69%;
+    height: 40px; 
+}
+.signup_btnDiv_for_login {
+    float: left;
+    width: 98%;
+   /* margin-top: 3%;*/
+    margin-top: 0%;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #F49829;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #F49829;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #F49829;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #F49829;
 }

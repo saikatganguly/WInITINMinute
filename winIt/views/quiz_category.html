@@ -1,0 +1,50 @@
+<div data-role="view" data-title="Quiz" data-layout="main">
+    <!--<div class="k-header">
+         <h4 class="title">Difficulty Level</h4>
+         <input id="dropdownlist" style="width: 100px;"/>
+    </div>-->
+     <h4 class="title">Difficulty Level</h4>
+    <select id="difficulty_level" onchange="startQuiz(this.value)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">4</option>
+    </select>
+</div>
+<script type="text/javascript"  src="scripts/showquiz.js"></script>
+<script>
+
+</script>
+
+<!--<script>
+                $(document).ready(function() {
+                    function onChange() {
+                        console.log("event: change");
+                    };
+
+                    function onSelect(e) {
+                        if ("kendoConsole" in window) {
+                            var dataItem = this.dataItem(e.item);
+                            console.log("event :: select (" + dataItem.text + " : " + dataItem.value + ")" );
+                        }
+                    };
+
+                    var data = [
+                        {text: "1", value:"1"},
+                        {text: "2", value:"2"},
+                        {text: "3", value:"3"},
+                        {text: "4", value:"4"},
+                        {text: "5", value:"5"}
+                    ];
+
+                    $("#dropdownlist").kendoDropDownList({
+                        dataTextField: "text",
+                        dataValueField: "value",
+                        dataSource: data,
+                        filter: "startswith",
+                        select: onSelect,
+                        change: onChange
+                    });
+                });
+</script>      -->  
