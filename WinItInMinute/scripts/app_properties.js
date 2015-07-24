@@ -5,7 +5,7 @@ function getAppProperties(){
    /* if(kendo.support.mobileOS.wp){
         $('.splash_logo').css('height','190px');
     }*/
-    //registerDeviceForPushNotification();
+     registerDeviceForPushNotification();
     var data = everlive.data('app_properties')
     data.get()
     .then(function(data){
