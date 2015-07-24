@@ -1,10 +1,7 @@
 var homeImageId = null;
 var defaultImageString = null;
 function getAppProperties(){
-    
-   /* if(kendo.support.mobileOS.wp){
-        $('.splash_logo').css('height','190px');
-    }*/
+   
      registerDeviceForPushNotification();
     var data = everlive.data('app_properties')
     data.get()
