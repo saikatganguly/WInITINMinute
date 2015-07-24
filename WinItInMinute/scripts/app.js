@@ -280,7 +280,10 @@ function confirmation(linkId){
          if(linkId === 'logout'){
              logout();
         }else{
-             $("#appDrawer").data("kendoMobileDrawer").hide();
+            if(!(app.view().id === linkId)){
+                $("#appDrawer").data("kendoMobileDrawer").hide();
+            }
+             
            if(app.view().id === "views/LeaderBoard.html" || app.view().id === "views/my_profile.html"){
                console.log(app.view().id);
               // $('#LeaderBoard').show();
