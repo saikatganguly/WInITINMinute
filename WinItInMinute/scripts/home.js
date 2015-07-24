@@ -16,6 +16,11 @@ function startQuiz(){
     }
 }
 function changeHomeUI(){
+    setTimeout(function(){
+        $('.km-scroll-container').attr('style','-webkit-transform:translate3d(0px, 0px, 0px) scale(1)');
+        $('.km-vertical-scrollbar').attr('style','-webkit-transform:translate3d(0px, 0px, 0px) scale(1)');
+    },200);
+    var trialFlag = localStorage.getItem('trialFlag');
     trackFeatureHome();
      if (kendo.support.mobileOS.wp) {
          console.log("changeHomeUI**********************");
@@ -26,36 +31,28 @@ function changeHomeUI(){
          $('.span12').css('margin-top', '0%');
          $('#start_btn').css('margin-bottom', '15%');
          $('#start_btn').css('height', '55px');
-       /* // if(slideFromLogin || loginFromSocial){
-            //  console.log("changeHomeUI slideFromLogin**********************"+slideFromLogin);
-            //  console.log("changeHomeUI loginFromSocial**********************"+loginFromSocial);
-              //$('#appDrawer').css('margin-top', '11.3%');
-           //  slideFromLogin = false;
-          //   loginFromSocial = false;
-         //}else if(slideFromLogin){
-              console.log("changeHomeUI slideFromLogin**********************"+slideFromLogin);
-              $('#appDrawer').css('margin-top', '60px');
-             //$('.km-header').css('margin-top', '30px');
-             slideFromLogin = false;
-         }*/
+     }
+    
+     if(trialFlag === 'true'){
+        $('#drawerBtn').hide();
+     }else{
+        $('#drawerBtn').show();
      }
 }
-function changeHomeUIBefore(){
-     // getHomeImage();
+function changeHomeUIBefore(e){
      createLoader();
-    if(typeof homeImageUrl === 'undefined'){
-        getHomeImage();
-    }
-    else{
-        console.log("homeImageUrl "+homeImageUrl);
-        document.getElementById('imgDiv').src = homeImageUrl;
-        $('#imgDiv').addClass('img-div');
-    }
-    
-    if((app.view().id === "views/login.html" || app.view().id === "views/registration.html") && kendo.support.mobileOS.wp){
-        // $('.km-header').css('margin-top', '90px');
-        slideFromLogin = true;
-        console.log("changeHomeUIBefore slideFromLogin******************"+slideFromLogin);
+     if(homeImageId === null){
+         document.getElementById('imgDiv').src = 'images/about_img.png';
+         $('#imgDiv').addClass('img-div');
+    }else{
+        if(typeof homeImageUrl === 'undefined'){
+            getHomeImage();
+        }
+        else{
+            console.log("homeImageUrl "+homeImageUrl);
+            document.getElementById('imgDiv').src = homeImageUrl;
+            $('#imgDiv').addClass('img-div');
+        }
     }
 }
 function trackFeatureHome(){
@@ -65,11 +62,10 @@ function trackFeatureHome(){
          console.log("inside track feature monitor******************");        
          //alert("after track feature");
      }
-      
-    catch(err) {
+     catch(err) {
         console.log('Something went wrong:');
     	console.log(err);
-    }
+     }
 }
 function getHomeImage() {
        console.log("getHomeImage*******************");
@@ -89,6 +85,7 @@ function getHomeImage() {
              
              $('#imgDiv').addClass('img-div');
              document.getElementById('imgDiv').src = homeImageUrl;
+            
             
               //isLoggedIn();
            /*$('.img-div-wp').src = downloadUrl

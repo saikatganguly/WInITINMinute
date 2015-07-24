@@ -1,0 +1,106 @@
+.k-group{
+    background-color: #3C4043;
+}
+#profileImage{
+    margin-left: 0%;
+    margin-top: 0;
+    width: 100%;
+    height: 109px;
+    border-radius: 94px;
+    border: none;
+}
+#profileDiv{
+    margin-left: 32%;
+    margin-top: 5%;
+    width: 38%;
+    height: 120px;
+    border: 6.5px solid #09d5ee;
+    border-radius: 94px;
+}
+.details-content {
+    margin: 5%;
+    width: 90%;
+    float: left;
+    color: #fff;
+}
+.details {
+    float: left;
+    width: 100%;
+    height: 25px;
+    border-bottom: 1px solid #6C7379;
+    margin: 5% 0;
+}
+.details-content > .details > input, 
+.details-content > .subContent > form > .details > input {
+    width: 45%;
+    color: #fff;
+    margin-top: -1%;
+    font-size: 15px;
+    float: left;
+}
+#old-password::-webkit-input-placeholder,
+#new-password::-webkit-input-placeholder {
+    color: #fff;
+}
+#old-password:-moz-placeholder,
+#new-password:-moz-placeholder {
+    color: #fff;
+}
+#old-password::-moz-placeholder,
+#new-password::-moz-placeholder {
+    color: #fff;
+}
+#old-password:-ms-input-placeholder,
+#new-password:-ms-input-placeholder {
+    color: #fff;
+}
+#popoverBtn{
+    float: left;
+    margin-top: 5%;
+    width: 38%;
+    border: 6.5px solid #09d5ee;
+    border-radius: 94px;
+    height: 120px;
+    padding: 0;
+    margin-left: 32%;
+    background: transparent;
+}
+a#nameEdit, a#addressEdit {
+    background: transparent;
+    margin-top: -2%;
+}
+.subContent {
+    float: left;
+}
+.subContent h3 {
+    text-align: center;
+    margin: 2%;
+}
+#errMsg{
+    height: 30px;
+}
+a#updateUser {
+    margin-left: 16%;
+    width: 70%;
+    background: url('../images/update.png') no-repeat transparent;
+    background-size: 100%;
+    height: 34px;
+    -webkit-box-shadow: 5px 9px 25px -4px #1F1E02;
+    -moz-box-radius: 5px 9px 25px -4px #1F1E02;
+    box-shadow: 5px 9px 25px -4px #1F1E02;
+}
+label.password-label {
+    margin-left: 25%;
+    width: 12%;
+    float: left;
+}
+label.labels {
+    float: left;
+    width: 35%;
+}
+.details > div {
+    float: left;
+}
+/*.details-content > .details > label {
+    float: left;
+}*/

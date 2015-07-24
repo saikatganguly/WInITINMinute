@@ -1,0 +1,81 @@
+{
+  "ProjectName": "WinItInMinute",
+  "ProjectGuid": "032b4d1b-787c-4bc3-9d79-21df5bbad794",
+  "projectVersion": 1,
+  "AppIdentifier": "com.UFDFD.WinItInMinute",
+  "DisplayName": "Win It In Minute",
+  "Author": "U+FDFD",
+  "Description": "Enjoy the game; Learn the Facts; Win some prizes",
+  "BundleVersion": "01.00.00",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [
+    "external-accessory"
+  ],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.CAMERA"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "Win It In Minute",
+  "WP8Publisher": "UFDFD",
+  "WP8Capabilities": [
+    "ID_CAP_ISV_CAMERA",
+    "ID_CAP_LOCATION",
+    "ID_CAP_MEDIALIB_PHOTO",
+    "ID_CAP_NETWORKING",
+    "ID_CAP_PUSH_NOTIFICATION",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{fce483d3-8741-493e-b302-c9c6a6841315}",
+  "WP8ProductID": "{feed6e5d-5f4d-4086-9988-a0ffe60544dd}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "ufdfd.WinItInMinute",
+  "WP8WindowsPublisherName": "CN=UFDFD",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "CordovaPluginVariables": {
+    "com.telerik.mobiletesting": {
+      "IOS_APP_URL": "winIt"
+    }
+  },
+  "CorePlugins": [
+    "com.phonegap.plugins.PushPlugin@2.5.1",
+    "com.telerik.feedback",
+    "com.telerik.mobiletesting",
+    "com.telerik.plugin.eqatecanalytics",
+    "org.apache.cordova.battery-status",
+    "org.apache.cordova.camera",
+    "org.apache.cordova.console",
+    "org.apache.cordova.contacts",
+    "org.apache.cordova.device",
+    "org.apache.cordova.device-motion",
+    "org.apache.cordova.device-orientation",
+    "org.apache.cordova.dialogs",
+    "org.apache.cordova.file",
+    "org.apache.cordova.file-transfer",
+    "org.apache.cordova.geolocation",
+    "org.apache.cordova.globalization",
+    "org.apache.cordova.inappbrowser",
+    "org.apache.cordova.media",
+    "org.apache.cordova.media-capture",
+    "org.apache.cordova.network-information",
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.statusbar",
+    "org.apache.cordova.vibration"
+  ]
+}

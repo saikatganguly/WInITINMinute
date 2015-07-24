@@ -1,0 +1,167 @@
+<div data-role="view" id="quiz" data-title="WinItInMinute" data-layout="main" data-before-show="changeBeforeQuizUI" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;">
+    <!--data-after-show="addRightItem" data-before-hide="beforeHide"-->
+    <div class="timer-div">
+        <span id="ms_timer" data-align="right"></span>
+        seconds
+    </div>
+
+    <div id="results"></div>
+    
+    <script type="text/x-kendo-template" id="temp">
+        <div>
+            <h3 class="question">#= question #</h3>
+            <ul id="option_ul" data-role="listview"  class="km-widget km-listview km-list">
+                # for(var i = 0, l = options.length; i < l; i++){#
+                    <li id="optionList_#:i#">
+                        <label class="km-listview-label">
+                            <input class="" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#" data-rel="modalview">
+                            <div class="radio-text">#= options[i] #</div>
+                        </label>
+                    </li>
+               #}#
+            </ul>
+        
+        </div>
+    </script>
+     <div data-role="modalview" id="messagemodalview" style="width: 70%;height:auto;  text-align: center;">
+         <div class='message-body'>
+                <div id="message"></div>
+                <a data-role="button" onclick="closeMessage()" id="messageBtn">OK</a>
+         </div>
+    </div>    
+   
+    <div data-role="modalview" id="quizmodalview" style="width: 99%;" data-stretch="true">
+        <div class="score_content">
+            <!--  <h4 id="quizResult"></h4>-->
+            <h4>
+                <div>Score</div>
+                <span id="trial_user_score"></span><br>
+                <span id="trial_text"></span>
+            </h4>
+            <!--	<h4>Score: <span id="user_total_score"></span></h4>-->
+           <!-- <a data-role="button" onclick="ok(this.id)" id="scoreBtn">OK</a>-->
+            <a data-role="button" onclick="ok(this.id)" id="registerBtn" style='display: none;'>Register</a>
+            <a data-role="button" onclick="ok(this.id)" id="skipBtn" style='display: none;'>Skip</a>
+        </div>
+                
+        <div class="star-field">
+            <div>
+                <div style="-moz-transform: rotate(+5deg); -o-transform: rotate(+5deg); -webkit-transform: rotate(+5deg); transform: rotate(+5deg);">
+                    <div class="star star-ani2 size-2 delay-2">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+10deg); -o-transform: rotate(+10deg); -webkit-transform: rotate(+10deg); transform: rotate(+10deg);">
+                    <div class="star size-3 delay-3">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+15deg); -o-transform: rotate(+15deg); -webkit-transform: rotate(+15deg); transform: rotate(+15deg);">
+                    <div class="star star-ani2 size-4 delay-4">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+20deg); -o-transform: rotate(+20deg); -webkit-transform: rotate(+20deg); transform: rotate(+20deg);">
+                    <div class="star size-5 delay-5">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+25deg); -o-transform: rotate(+25deg); -webkit-transform: rotate(+25deg); transform: rotate(+25deg);">
+                    <div class="star star-ani2 size-6 delay-6">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+30deg); -o-transform: rotate(+30deg); -webkit-transform: rotate(+30deg); transform: rotate(+30deg);">
+                    <div class="star size-7 delay-7">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+35deg); -o-transform: rotate(+35deg); -webkit-transform: rotate(+35deg); transform: rotate(+35deg);">
+                    <div class="star size-8 delay-8">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <div class="star-field field2">
+            <div>
+                <div style="-moz-transform: rotate(+5deg); -o-transform: rotate(+5deg); -webkit-transform: rotate(+5deg); transform: rotate(+5deg);">
+                    <div class="star star-ani2 size-2 delay-2">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+10deg); -o-transform: rotate(+10deg); -webkit-transform: rotate(+10deg); transform: rotate(+10deg);">
+                    <div class="star size-3 delay-3">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+15deg); -o-transform: rotate(+15deg); -webkit-transform: rotate(+15deg); transform: rotate(+15deg);">
+                    <div class="star star-ani2 size-4 delay-4">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+20deg); -o-transform: rotate(+20deg); -webkit-transform: rotate(+20deg); transform: rotate(+20deg);">
+                    <div class="star size-5 delay-5">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+25deg); -o-transform: rotate(+25deg); -webkit-transform: rotate(+25deg); transform: rotate(+25deg);">
+                    <div class="star star-ani2 size-6 delay-6">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+30deg); -o-transform: rotate(+30deg); -webkit-transform: rotate(+30deg); transform: rotate(+30deg);">
+                    <div class="star size-7 delay-7">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+35deg); -o-transform: rotate(+35deg); -webkit-transform: rotate(+35deg); transform: rotate(+35deg);">
+                    <div class="star size-8 delay-8">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="star-field field3">
+            <div>
+                <div style="-moz-transform: rotate(+5deg); -o-transform: rotate(+5deg); -webkit-transform: rotate(+5deg); transform: rotate(+5deg);">
+                    <div class="star star-ani2 size-2 delay-2">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+10deg); -o-transform: rotate(+10deg); -webkit-transform: rotate(+10deg); transform: rotate(+10deg);">
+                    <div class="star size-3 delay-3">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+15deg); -o-transform: rotate(+15deg); -webkit-transform: rotate(+15deg); transform: rotate(+15deg);">
+                    <div class="star star-ani2 size-4 delay-4">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+20deg); -o-transform: rotate(+20deg); -webkit-transform: rotate(+20deg); transform: rotate(+20deg);">
+                    <div class="star size-5 delay-5">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+25deg); -o-transform: rotate(+25deg); -webkit-transform: rotate(+25deg); transform: rotate(+25deg);">
+                    <div class="star star-ani2 size-6 delay-6">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+30deg); -o-transform: rotate(+30deg); -webkit-transform: rotate(+30deg); transform: rotate(+30deg);">
+                    <div class="star size-7 delay-7">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+                <div style="-moz-transform: rotate(+35deg); -o-transform: rotate(+35deg); -webkit-transform: rotate(+35deg); transform: rotate(+35deg);">
+                    <div class="star size-8 delay-8">
+                        <div id="star-five"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

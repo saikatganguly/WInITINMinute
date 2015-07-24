@@ -1,5 +1,6 @@
 var everlive;
 var userId;
+
 $(document).ready(function(){
      console.log("access-token************"+localStorage.getItem('access-token'));
      everlive = new Everlive({
@@ -7,6 +8,17 @@ $(document).ready(function(){
         scheme: "https",
         token: localStorage.getItem('access-token')
     });
+    if (localStorage.getItem("trialFlag") === null) {
+        localStorage.setItem('trialFlag', false);
+    }
+    if (localStorage.getItem("quizCount") === null) {
+        localStorage.setItem('quizCount', 0);
+    }
+    /*if (localStorage.getItem("trialPoints") === null) {
+        var trialPoints = 0;
+        localStorage.setItem('trialPoints', trialPoints);
+    }*/
+    
 });
 
 function changeUI(){
@@ -15,14 +27,14 @@ function changeUI(){
     if (kendo.support.mobileOS.android) {
        // $('.logo').css('height','165px');
        // $('.option').css('height','50px');
-        $('.login-icon').css('height','27px');
-        $('.password-icon').css('height','31px');
+       // $('.login-icon').css('height','27px');
+       // $('.password-icon').css('height','31px');
     }
      if (kendo.support.mobileOS.wp) {
         $('.textbox').css('font-size','25px');
-        $('.logo').css('height','165px');
-        $('.logo').css('margin','10% 0  0 36%');
-        $('.error').css('height','30px');
+       /* $('.logo').css('height','165px');
+        $('.logo').css('margin','10% 0  0 36%');*/
+        $('.error').css('height','60px');
         $('.loginContent').css('margin-top','3%');
         $('.option').css('height','75px');
         $('.feild').css('margin-left','16%');
@@ -55,20 +67,23 @@ function removeLoginMessage(){
 function login(fromRegistration){
     $('#acceptButton').fadeTo(100, 0.1).fadeTo(200, 1.0);
     console.log("inside login fromRegistration***********  "+fromRegistration);
+      
     var username;
     var password;
     var validator;
         if(fromRegistration){
-            username = $("#registration_email").val();
-            password =  $("#registration_pwd").val();
+            username  =  $("#registration_name").val();
+            password  =  $("#registration_pwd").val();
             validator = $("#registerForm").kendoValidator().data("kendoValidator");  
         }else{
+            
             username = $("#userName").val();
             password = $("#password").val();
             validator = $("#loginForm").kendoValidator().data("kendoValidator"); 
         }
     
          if (validator.validate()) {
+              
                 console.log("username*****"+username+"  password*****"+password);
                 everlive.Users.login(username, password, function(data) {
                     console.log("login success************* " +JSON.stringify(data));
@@ -78,7 +93,8 @@ function login(fromRegistration){
                     localStorage.setItem('userId',data.result.principal_id);
                     console.log("login userId*********** "+userId);
                     localStorage.setItem('userName' , username);
-                   // localStorage.setItem('displayName' , data.result.Name);
+                    localStorage.setItem('trialFlag', 'false');
+                    localStorage.removeItem('trialPoints');
                     app.navigate("views/home.html","slide");
                 }, 
                 function(error) {
@@ -87,7 +103,7 @@ function login(fromRegistration){
                     $("#errLoginMsg").text("Invalid Username or Password!");
                     // $("#userName").val("");
                     $("#password").val("");
-               });
+                });
          } 
 }
 function logout(){
@@ -167,6 +183,26 @@ function faceBookLogin(){
             }
     });
 }
+
+function trialAccess(){
+    var userName = 'Trial User';
+    var password = 'trai1234';
+    
+    everlive.Users.login(userName, password, 
+        function(data) {
+             console.log("trail login success************* " +JSON.stringify(data));
+             localStorage.setItem('trialFlag', 'true');
+             localStorage.setItem('access-token', data.result.access_token);
+             localStorage.setItem('userId',data.result.principal_id);
+             app.navigate("views/home.html","slide");
+        }, 
+        function(error) {
+             console.log("login error************* " +JSON.stringify(error));
+             console.log(error.message);
+        });
+}
+
+
 
 /********************* Twitter login*********************************/
 
