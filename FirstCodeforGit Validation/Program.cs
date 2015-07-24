@@ -10,6 +10,7 @@ namespace FirstCodeforGit_Validation
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Well this should work");
         }
     }
 }
