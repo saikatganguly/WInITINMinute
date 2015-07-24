@@ -1,0 +1,62 @@
+.quiz_info_logo{
+    background: url('../images/logo.png') no-repeat;
+    width: 45%;
+    height: 100px;
+    float: left;
+    margin: 0 0  0 36%;
+    background-size: 60% 90%; 
+}
+#start_btn{
+    background: url('../images/start.png') no-repeat; 
+    background-size: 100% 100%;
+    width: 80%;
+    height: 40px; 
+    margin-bottom: 10%;
+    -webkit-box-shadow: 5px 9px 9px -2px #1F1E02;
+    -moz-box-radius: 5px 9px 9px -2px #1F1E02;
+    box-shadow: 5px 9px 9px -2px #1F1E02;
+}
+.start_btnDiv {
+    float: left;
+    width: 80%;
+    margin-left: 18%;
+    /*margin-top:30%;*/
+}
+.img-div{
+ /* background: url('../images/about_img.png') no-repeat;  
+  background-repeat: no-repeat;
+   background-size: 100%;*/
+  width:92%;
+  height:180px;
+  margin: 0 0 0 4%;
+  float: left;
+}
+/*.img-div-wp{
+ /* background: url('../images/about_img.png') no-repeat;  
+  background-size: 100%;
+  width:92%;
+  height:270px;
+  margin: 0 0 0 4%;
+  float: left;
+}*/
+.span12{
+    float: left;
+   /* width: 100%;*/
+   /* margin-top:-15px;*/
+  /*  margin-top:-50px;*/
+    /*text-align: justify; 
+    color:#F0F2F2;*/
+    margin: 0px 5% 5% 5%;
+}
+.span12 > p{
+   /* margin-top:-15px;*/
+   /* height:auto;*/
+    margin: 2% 0%;
+    float: left;
+    text-align: justify; 
+    color:#F0F2F2;
+     width: 100%;
+}
+.padding-top{
+  padding-top:30px;
+}

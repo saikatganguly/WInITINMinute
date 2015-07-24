@@ -1,0 +1,33 @@
+<div data-role="view" id="quiz" data-title="WinItInMinute" data-layout="main" data-before-show="changeBeforeQuizUI" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;">
+     <!--data-after-show="addRightItem" data-before-hide="beforeHide"-->
+   <div class="timer-div">
+       <span id="ms_timer" data-align="right"></span>
+       seconds
+    </div>
+    
+    <div id="results"></div>
+ 
+<script type="text/x-kendo-template" id="temp">
+    <div>
+        <h3 class="question">#= question #</h3>
+        <ul id="option_ul" data-role="listview"  class="km-widget km-listview km-list">
+            # for(var i = 0, l = options.length; i < l; i++){#
+            <li id="optionList_#:i#">
+                <label class="km-listview-label">
+                    <input class="" type="radio" id="option_#:i#" name="options" onclick="activitiesChanged(this.id)" value="#=options[i]#" data-rel="modalview">
+                    #= options[i] #
+                </label>
+            </li>
+           #}#
+        </ul>
+    
+    </div>
+</script>
+  <div data-role="modalview" id="modalview" style="width: 90%;">
+         <h4 id="quizResult"></h4>
+         <h4>Score: <span id="user_score"></span></h4>
+      <!--	<h4>Score: <span id="user_total_score"></span></h4>-->
+         <div ><a data-role="button" data-click="ok" style="color: red;background:green;">ok</a></div>
+  </div>   
+   
+</div>

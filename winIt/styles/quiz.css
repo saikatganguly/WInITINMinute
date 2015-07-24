@@ -1,0 +1,150 @@
+#startQuiz{
+     background: url('../images/start_quiz.png') no-repeat; 
+     background-size: 100% 100%;
+     width: 108%;
+     height: 40px;
+}
+#ms_timer{
+    color: #F3F2F0;
+    font-size: 18px;
+    font-weight: lighter;
+}
+.timer-div{
+    width: 35%;
+    border-radius: 4px;
+    margin-left: 35%;
+    margin-top: 2%;
+    border: 1px solid #E1384B;
+    text-align: center;
+    background: #E1384B;
+    height: 32px;
+    padding-top: 1%;
+    color: #F3F2F0;
+    font-weight: lighter;
+}
+.km-content h3{
+   margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 3.5%;
+   margin-top: 3%;
+}
+.question{
+    width: 96%;
+    height: auto;
+    float: left;
+    font-weight: lighter;
+    padding: 5%;
+   /* padding: 10% 5% 10% 5%;*/
+    background-color: #B1CB36;
+    border-radius: 6px;
+    color: #fff;
+    font-family:  Myriad Pro regular;
+    font-size: 18px;
+    font-weight: lighter;
+}
+#option_ul>li{
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    margin-bottom: 3%;
+    height: 41px;
+    background: #E0DEDF;
+    width: 96%;
+    margin-left: 2%;
+    font-size: 16px;
+    border-radius: 6px;
+}
+.btnDiv {
+    float: left;
+    width: 98%;
+    margin-left: 1%;
+    margin-top: -1%;
+}
+#nextBtn{
+     background: url('../images/next_btn.jpg') no-repeat; 
+     background-size: 100% 100%;
+     width: 99%;
+     height: 40px;
+}
+/*.yahoo-img {
+    background: url('../images/yahoo.png') no-repeat;
+    width: 94%;
+    height: 50px;
+    float: left;
+    margin: 3%;
+    background-size: 100% 100%;
+}*/
+ .km-widget .km-listview-label {
+    font-size: 13px;
+    color: #000000;
+    padding-left: 18px;
+}
+/*input[type="radio"]{
+    display:none;
+}*/
+/*input[type="radio"] + label{
+    background: url('../images/unchecked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    display:inline-block;
+}
+input[type="radio"]:checked + label{
+    background: url('../images/checked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    display:inline-block;
+}*/
+.km-flat .km-listview-label input[type=radio]{
+display:inline-block;
+    background: url('../images/unchecked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
+}  
+.km-flat .km-listview-label input[type=radio]:checked{
+display:inline-block;
+    background: url('../images/checked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
+}
+/*.km-flat .km-listview-label input[type='radio'][checked]{
+display:inline-block;
+    background: url('../images/checked.png') no-repeat;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 21px;
+    cursor: pointer;
+    margin-top: -3%;
+}*/
+/*.km-root .km-pane .km-view .km-icon{
+    background-size:100% 100%;
+}*/
+.km-root .km-pane .km-check:checked:after, .km-widget .km-check:checked:after{
+    content: none;
+}
+.km-flat .km-listinset>li:first-child:last-child, 
+.km-flat .km-listgroupinset .km-list>li:first-child:last-child {
+  background-color: #3C4043;
+}
+.km-list input[type=radio] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.km-wp .km-listview-label input[type=radio]{
+  border-color: #fff;
+  box-shadow: 0 0 0 #fff;
+  -webkit-box-shadow: 0 0 0 #fff;
+}
+::-ms-check{
+    width: 0%;
+    border: none;
+}

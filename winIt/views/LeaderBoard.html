@@ -1,0 +1,30 @@
+
+<div data-role="view"  data-title="Score Board" data-layout="main" data-before-show="getLeaderBoard" style="-webkit-transform: translate3d(0px, 0px, 0px) scale(1) !important; transform: translate3d(0px, 0px, 0px) scale(1) !important;" id="LeaderBoard" >
+   
+    <div>
+         <div class="leaderboard-content">
+            <div class="text_center"><span>My Score</span></div>
+            <div class="text_center"><img id="img_leaderBoard" src=""/></div>
+            <div class="text_center">
+                 <span class="User_name"></span><!--<br>
+                  <span class="location" id="user_location"></span>-->
+            </div>
+            <div class="text_center"><span class="current_user_score" id="current_user_score">0</span><span class="points_text" style="#FEFEFF;"> Points</span></div>
+        </div>
+     </div>
+  
+    <div class="header_logo"><span class="header_logo_title">Leaders Board</span></div>
+    <ul id="custom-listview"></ul>
+    
+    <script type="text/x-kendo-template" id="customListViewTemplate" class="customListViewTemplate">
+        <img class="leaderBoard_profile_img" src="${ProfileImage}" />
+        <span class="top_users_detail">${DisplayName}<!--<br><span class="location" id="location" style=""></span>--></span>
+        <span class="top_users_detail_points" >${points}<span>Points</span></span>
+</script>
+     
+    <script>
+        
+
+</script>
+</div>
+

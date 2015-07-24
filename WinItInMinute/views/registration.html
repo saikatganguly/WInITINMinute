@@ -1,0 +1,81 @@
+<div data-role="view" id="register" data-title="register" data-before-show="changeRegistrationUI" >
+     
+    <form action="#" id="registerForm" onsubmit="return false;">
+        
+          <div id="logo" class="registration_logo"></div>
+         <div id="registration_errMsg" class="registration_error"></div>
+       <div class="registrationContent">
+           <!--<form action="#" id="fileToUploadForm">
+               <input type="file" id="fileToUpload">
+           </form>-->
+            <div class="registration_option" id="registration_option_for_name">
+                
+                <div class="registration_feild">
+                    
+                    <input type="text" name="registration_name"  id="registration_name"  class="registration_textbox" placeholder="Display Name" required  data-required-msg="Enter Display Name" onfocus="removeMessage()" onblur="checkNameDuplicacy(this.value)"\>
+                  
+                     <!--<span class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" data-for="registration_name" id="registration_name_err" style="display: none;"></span>-->
+               </div>
+                    <span class="k-invalid-msg nameError" data-for="registration_name" id="nameError"></span>
+           </div>
+        
+           <div class="registration_option" id="registration_option_for_email">
+             
+                <div class="registration_feild">
+                    <input type="email" name="registration_email" id="registration_email" class="registration_textbox" placeholder="Enter Email" required  data-required-msg="Enter Email" data-email-msg="Email format is not valid"  onfocus="removeMessage()" onblur="checkEmailDuplicay(this.value)"\>
+                  
+               </div>
+                    <span class="k-invalid-msg emailError" data-for="registration_email" id="emailError"></span>
+          </div>
+        
+             <div class="registration_option">
+                 
+                <div class="registration_feild">
+                    <input type="password" name="registration_pwd"  id="registration_pwd" class="registration_textbox" required data-required-msg="Enter Password"  placeholder="Enter Password" onfocus="removeMessage()"\>
+                   
+                    <!--<label id="geoLocation"></label>-->
+                </div>
+                    <span class="k-invalid-msg" data-for="registration_pwd" id="registration_pwd"></span>
+                
+            </div>
+           
+           <div class="registration_option">
+                 
+                <div class="registration_feild">
+                    <input type="password" name="registration_confirmPwd"  id="registration_confirmPwd" class="registration_textbox" required data-required-msg="Enter Confirm Password"  placeholder="Confirm Password" onfocus="removeMessage()"\>
+                   
+                    <!--<label id="geoLocation"></label>-->
+                </div>
+                    <span class="k-invalid-msg" data-for="registration_confirmPwd" id="registration_confirmPwd"></span>
+                
+            </div>
+           
+           
+        <!--<div class="registration_feild"> <label id="geoLocation" style="text-align:left;"></label></div>-->
+           
+          
+            <div class="signup_btnDiv" >
+                 <a data-role="button"  id="signup_btn" onclick="return validateRegistration()"  style="pointer-events:true"></a>
+            </div>
+         <!--<div style="padding-top:5px;">
+               <span>continue with us</span>
+           </div>-->
+            <!--<div class="option" style="color:#999999;font-size: 15px;margin-left:0px;margin-top:0px;height:45px;padding-top:10px">
+                <span> continue with us </span>
+            </div>-->
+         
+            <!-- <div id="social">
+                   <span id="fb_icon_height"><a data-role="button"  id="fb_btn" onclick="return faceBookLogin()"></a></span>
+                   <!--<span id="tw_icon_height_for_registration"><a data-role="button"  id="twitter_btn" onclick="return logInTwitter()"></a></span>-->
+                 <!--  <span id="google_icon_height"><a data-role="button" id="google_btn" onclick="return logInGoogle()"></a></span>
+                   <span id="microsoft_icon_height"><a data-role="button" id="microsoft_btn" onclick="return logInMicrosoft()"></a></span>
+                </div>-->
+              
+            <div class="loginbtn_Div">
+                <a data-role="button"  id="login_btn" href="views/login.html" onclick="return sign_in_from_registration()"></a>
+            </div>
+           <img id="preview" src="" style="display: none;">
+            <canvas id="myCanvas" style="display: none;"/>
+       </div>  
+      </form> 
+</div>
