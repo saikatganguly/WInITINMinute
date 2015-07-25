@@ -3,21 +3,7 @@ var currentUserName;
 var groupedData;
 var imageUrl = {};
 //var getDuretion;
-function showScoreView(){
-    setTimeout((function() {
-         $('#modalview').css('height', initialScreenHeight);
-         $('.km-modalview-root').css('opacity', '0.8');
-        if(user.isBonusGame && user.score >= 5){
-            $("#user_score").text("Hurray!! You have won a prize.");
-        }
-        else{
-            $("#user_score").text("You gained "+user.score+" points. Your total point is "+total_points);
-        }
-        
-        $("#modalview").addClass('check-modalview');
-        $("#modalview").kendoMobileModalView("open"); 
-    }), 500);
-}
+
 function getLeaderBoard() {
     console.log("getLeaderBoard");
    

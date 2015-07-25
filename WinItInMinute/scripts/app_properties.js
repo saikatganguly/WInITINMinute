@@ -1,8 +1,11 @@
 var homeImageId = null;
 var defaultImageString = null;
 function getAppProperties(){
-   
-     registerDeviceForPushNotification();
+   try{
+        registerDeviceForPushNotification();
+   }catch(error){
+       console.log('Push notification not supported in simular');
+   }
     var data = everlive.data('app_properties')
     data.get()
     .then(function(data){

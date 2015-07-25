@@ -1,3 +1,4 @@
+//code added by Saikat on 7/25. Tag used ~saik7/25
 var data={}; 
 var questionTemplate = null;
 var selected = null;
@@ -22,22 +23,19 @@ function initQuiz(){
      getPoints(); 
      min = 1;
      sec = 0;
-     var trialFlag = localStorage.getItem('trialFlag');
     
-    if(trialFlag === 'false'){
-         var isMax10Prizes = false;
-         var quizCount = parseInt(localStorage.getItem("quizCount"));
-         if(quizCount < 20){
-            isMax10Prizes = true;
-         }
-    }
+    var isMax10Prizes = false;
+    var quizCount = parseInt(localStorage.getItem("quizCount"));
+         
     
+    var isTrialGame=localStorage.getItem('trialFlag');// ~saik7/25 
     var customParam = JSON.stringify({
     "filterParam" :{
        'city': city,
        'country' : country,
        'userId' : localStorage.getItem('userId'),
-       'isMax10Prizes' : 'true'
+       'isTrialGame' : isTrialGame , 
+       'quizCount' : quizCount
     }
     });
     console.log(customParam);
@@ -80,7 +78,7 @@ function initQuiz(){
                 changeQuection(user.questionIndex);
             // }
             randomArray = getArrayofNum(1,9,9);
-            if(result.isBonusGame && trialFlag === 'false'){
+            if(result.isBonusGame){
                 user.isBonusGame = result.isBonusGame;
               //  $('#messagemodalview').parent().parent().parent().css('border-radius', '10px');
                // $('#messagemodalview').css('border-radius', '10px');
@@ -282,7 +280,7 @@ function changeQuection(index){
 function changeQuizUI(){
     console.log("initialScreenHeight  "+initialScreenHeight);
     createLoader();
-    $('#quizmodalview').css('height', initialScreenHeight);
+    $('#modalview').css('height', initialScreenHeight);
    // $('#quizmodalview').parent().parent().parent().css('opacity', '0.8');
     $('.km-modalview-root').css('opacity', '0.8');
     
@@ -392,59 +390,59 @@ function timeisUp() {
     if(!(localStorage.getItem('trialPoints') === null)){
         total_points = Number(localStorage.getItem('trialPoints'));
     }
-    
-        if(user.score === 10){  
-             console.log("score win************** "+user.score);
-             points = 100;
-             total_points += points;
-            if(trialFlag === 'false'){
-                updateQuizStatus('true');
-            }
-             
-         }
-         else{
-             console.log("score loose************** "+user.score);
-             points = user.score;
-             total_points += user.score;
-             if(trialFlag === 'false'){
-                 updateQuizStatus('false');
+         if(user.isBonusGame && user.score >= 5 && trialFlag === 'false'){
+             updatePrizeStatus(true);
+         }else{
+             if(user.score === 10){  
+                 console.log("score win************** "+user.score);
+                 points = 100;
+                 total_points += points;
+                if(trialFlag === 'false'){
+                    updateQuizStatus(true);
+                }
              }
-             
-         } 
-    
-    // $("#trial_text").before('<span id="user_score"></span><br>');
-    
+             else{
+                 console.log("score loose************** "+user.score);
+                 points = user.score;
+                 total_points += user.score;
+                 if(trialFlag === 'false'){
+                      updateQuizStatus(false);
+                 }
+                 
+             } 
+         }
+         
     if(trialFlag === 'true'){
-         $("#trial_user_score").text("You gained "+points+" points. Your total point is "+total_points+".");
+         //$("#trial_user_score").text("You gained "+points+" points. Your total point is "+total_points+".");
          $("#trial_text").text('If you want to save your points, just register yourself!');
-        /* $("#scoreBtn").hide();*/
+         $("#scoreBtn").hide();
          $("#registerBtn").show();
          $("#skipBtn").show();
          localStorage.setItem('trialPoints', total_points);
-         $("#quizmodalview").addClass('check-modalview');
-         $("#quizmodalview").kendoMobileModalView("open");
+       //  $("#quizmodalview").addClass('check-modalview');
+       //  $("#quizmodalview").kendoMobileModalView("open");
     }else{
          var quizCount = parseInt(localStorage.getItem("quizCount"));
          quizCount++;
          localStorage.setItem('quizCount', quizCount);   
          $('#ms_timer').empty();
          $('#results').empty();
+         $('#trial_text').empty();
          $("#scoreBtn").show();
+         $("#registerBtn").hide();
+         $("#skipBtn").hide();
          setTimeout(function(){
                stopTimer();
                hideBanner();
          }, 500);
-        /* $("#registerBtn").hide();
-         $("#skipBtn").hide();*/
+        
          app.navigate("views/LeaderBoard.html","slide"); 
-        showScoreView();
         // $("#user_score").text("You gained "+user.score+" points. Your total point is "+total_points);
         if(!(user.isBonusGame && user.score >= 5)){
             updatePoints(total_points);
         }
-         
     }
-     
+     showScoreView();
   
 }
 function updatePoints(points){
@@ -461,6 +459,32 @@ function updatePoints(points){
     });
         
 } 
+function showScoreView(){
+    setTimeout((function() {
+         $('#modalview').css('height', initialScreenHeight);
+         $('.km-modalview-root').css('opacity', '0.8');
+        if(user.isBonusGame && user.score >= 5){
+            $("#user_score").text("Hurray!! You have won a prize.");
+        }
+        else{
+            $("#user_score").text("You gained "+user.score+" points. Your total point is "+total_points);
+        }
+        
+        $("#modalview").addClass('check-modalview');
+        $("#modalview").kendoMobileModalView("open"); 
+    }), 500);
+}
+function updatePrizeStatus(isPrizeWon){
+    var userId=localStorage.getItem('userId');
+    var data1 = everlive.data('Users');
+    data1.updateSingle({'Id': userId, 'isPrizeWon': isPrizeWon },
+    function(data){
+        console.log("updatePrizeStatus success************** "+JSON.stringify(data));
+    },
+    function(error){
+        console.log("updatePrizeStatus error************** "+JSON.stringify(error));
+    });
+}
 function ok(btnId){
     console.log("ok**************");
     /*$('#ms_timer').empty();
@@ -472,8 +496,8 @@ function ok(btnId){
     $("#"+btnId).fadeTo(100, 0.1).fadeTo(200, 1.0);
     $("#modalview").removeClass('check-modalview');
     $("#modalview").kendoMobileModalView("close");
-    $("#quizmodalview").removeClass('check-modalview');
-    $("#quizmodalview").kendoMobileModalView("close");
+   // $("#quizmodalview").removeClass('check-modalview');
+  //  $("#quizmodalview").kendoMobileModalView("close");
    /* if(btnId === 'scoreBtn'){
         app.navigate("views/LeaderBoard.html","slide"); 
     }else{*/
@@ -518,7 +542,7 @@ function updateQuizStatus(isWon){
     var userName=localStorage.getItem('userName');
     var userId=localStorage.getItem('userId');
    // alert(userName+" "+ userId);
-    data.create({ 'user_name' : userName , 'quiz_status' : isWon ,  'user_id' : userId },
+    data.create({ 'user_name' : userName , 'quiz_status' : isWon , 'user_id' : userId },
     function(data){
         //alert(data.result.Id);
      
